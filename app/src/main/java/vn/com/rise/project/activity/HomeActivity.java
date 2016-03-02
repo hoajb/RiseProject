@@ -1,8 +1,8 @@
 package vn.com.rise.project.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import vn.com.rise.project.R;
 import vn.com.rise.project.views.CircleMenuLayout;
@@ -37,17 +37,24 @@ public class HomeActivity extends BaseActivity {
 
             @Override
             public void itemClick(View view, int pos) {
-                Toast.makeText(HomeActivity.this, mItemTexts[pos],
-                        Toast.LENGTH_SHORT).show();
+                String title = mItemTexts[pos];
 
+                Intent intent = new Intent(HomeActivity.this, MainClassDetailActivity.class);
+                intent.putExtra(MainClassDetailActivity.EXTRA_TITLE, title);
+
+                startActivity(intent);
+
+                //TODO chống doubleclick ở đây
             }
 
             @Override
             public void itemCenterClick(View view) {
-                Toast.makeText(HomeActivity.this,
-                        "you can do something just like ccb  ",
-                        Toast.LENGTH_SHORT).show();
+                String title = getString(R.string.class_general_title);
 
+                Intent intent = new Intent(HomeActivity.this, GeneralClassActivity.class);
+                intent.putExtra(GeneralClassActivity.EXTRA_TITLE, title);
+
+                startActivity(intent);
             }
         });
 

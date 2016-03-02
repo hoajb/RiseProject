@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">Rise Project Demo</string>
+
+    <!--Class Main Detail-->
+    <string name="class_main_detail_image">Hình Ảnh</string>
+    <string name="class_main_detail_video">Video</string>
+    <string name="class_main_detail_info">Thông tin chi tiết</string>
+
+    <!--Class General-->
+    <string name="class_general_title">Tổng Quát</string>
+    <string name="class_general_program_tree">Cây Chương Trình</string>
+    <string name="class_general_schedule">Lịch Học</string>
+    <string name="class_general_price">Biểu Phí Và Chương Trình Khác</string>
+    <string name="class_general_form_price">Form Tính Phí</string>
+    <string name="class_general_website">Website Trường</string>
+
+
+    <!--Margin-->
+    <!--<string name="button_margin_left">10%</string>-->
+    <!--<string name="button_margin_padding">5%</string>-->
+    <!--<string name="button_margin_top">10%</string>-->
+    <!--<string name="button_height">15%</string>-->
+    <!--<string name="button_width">60%</string>-->
+
+    <!--<string name="title_margin_left">5%</string>-->
+    <!--<string name="title_margin_top">5%</string>-->
+    <!--<string name="title_height">10%</string>-->
+    <!--<string name="title_width">20%</string>-->
+
+
 </resources>
