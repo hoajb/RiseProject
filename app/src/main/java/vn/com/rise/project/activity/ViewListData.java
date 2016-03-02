@@ -17,9 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.List;
 
 import vn.com.rise.project.R;
+import vn.com.rise.project.Utils.Constants;
 import vn.com.rise.project.Utils.FileUtils;
 
 /**
@@ -185,9 +187,28 @@ public class ViewListData extends BaseActivity {
 
         @Override
         protected List<String> doInBackground(Void... params) {
-            String rootPath = Environment.getExternalStorageDirectory().getPath() + FileUtils.SD_ROOT_PATH;
+            String pathView = Environment.getExternalStorageDirectory().getPath() + FileUtils.SD_ROOT_PATH;
 
-            return FileUtils.getImagePaths(rootPath, new FileUtils.ImageFilter());
+            FilenameFilter filter = null;
+            String nameClass = Constants.getMapsValueClass().get(mPos);
+
+            switch (mTypeData) {
+                case TYPE_IMAGE:
+                    pathView += "/" + nameClass + "/Hinh anh";
+                    filter = new FileUtils.ImageFilter();
+                    break;
+
+                case TYPE_VIDEO:
+                    pathView += "/" + nameClass + "/Video";
+                    filter = new FileUtils.VideoFilter();
+                    break;
+
+                case TYPE_INFO:
+                    pathView += "/" + nameClass + "/Thong tin chi tiet";
+                    filter = new FileUtils.DocumentFilter();
+                    break;
+            }
+            return FileUtils.getImagePaths(pathView, filter);
         }
 
         @Override

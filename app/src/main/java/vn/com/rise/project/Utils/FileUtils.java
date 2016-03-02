@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class FileUtils {
 
     private static final String TAG = "ImageGalleryFragment";
-    public static final String SD_ROOT_PATH = "/RiseFolder";
+    public static final String SD_ROOT_PATH = "/RISEVietnam";
     public static final String FILE_NAME_SAVE = "Rise_Info";
     public static final String LINK_WEB_ABOUT = "http://rise.com.vn/vn/gioi-thieu";
 
@@ -34,37 +34,40 @@ public class FileUtils {
 
     public static class VideoFilter implements FilenameFilter {
         public boolean accept(File dir, String name) {
-            return (name.endsWith(".mp4"));
+
+            return (name.toLowerCase().endsWith(".mp4"));
         }
     }
 
     public static class ImageFilter implements FilenameFilter {
         public boolean accept(File dir, String name) {
-            return (name.endsWith(".jpg")
-                    || name.endsWith(".jpeg")
-                    || name.endsWith(".png"));
+            String nameLowerCase = name.toLowerCase();
+            return (nameLowerCase.endsWith(".jpg")
+                    || nameLowerCase.endsWith(".jpeg")
+                    || nameLowerCase.endsWith(".png"));
         }
     }
 
     public static class DocumentFilter implements FilenameFilter {
         public boolean accept(File dir, String name) {
-            return (name.endsWith(".pdf")
-                    || name.endsWith(".txt")
+            String nameLowerCase = name.toLowerCase();
+            return (nameLowerCase.endsWith(".pdf")
+                    || nameLowerCase.endsWith(".txt")
 
-                    || name.endsWith(".doc")
-                    || name.endsWith(".docx"))
+                    || nameLowerCase.endsWith(".doc")
+                    || nameLowerCase.endsWith(".docx"))
 
-                    || name.endsWith(".xls")
-                    || name.endsWith(".xlsx")
+                    || nameLowerCase.endsWith(".xls")
+                    || nameLowerCase.endsWith(".xlsx")
 
-                    || name.endsWith(".ppt")
-                    || name.endsWith(".pptx")
+                    || nameLowerCase.endsWith(".ppt")
+                    || nameLowerCase.endsWith(".pptx")
                     ;
         }
     }
 
     public static String getMIMETypeFromPath(String path) {
-        String extension = getExtension(path);
+        String extension = getExtension(path).toLowerCase();
         if (TextUtils.isEmpty(extension)) return "";
 
         if (extension.equals("pdf")) {

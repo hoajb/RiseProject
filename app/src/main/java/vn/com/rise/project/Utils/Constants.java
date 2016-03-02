@@ -12,7 +12,7 @@ public class Constants {
         if (mapValueClass == null) {
             mapValueClass = new SparseArray<>();
 
-            mapValueClass.put(0, "PreK");
+            mapValueClass.put(0, "PK");
             mapValueClass.put(1, "K");
             mapValueClass.put(2, "S1");
             mapValueClass.put(3, "S2");
