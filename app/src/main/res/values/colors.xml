@@ -5,4 +5,9 @@
     <color name="colorAccent">#FF4081</color>
     <color name="grey">#FF666666</color>
     <color name="grey_50">#F0666666</color>
+    <color name="gray_tran">#40666666</color>
+    <color name="gray_press">#90666666</color>
+    <color name="din">#f0e5e5e5</color>
+    <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
 </resources>

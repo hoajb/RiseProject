@@ -14,6 +14,8 @@
     <string name="class_general_form_price">Form Tính Phí</string>
     <string name="class_general_website">Website Trường</string>
 
+    <string name="empty">Dữ Liệu Rỗng</string>
+
 
     <!--Margin-->
     <!--<string name="button_margin_left">10%</string>-->
