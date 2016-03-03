@@ -33,6 +33,7 @@ public class ViewListData extends BaseActivity {
     public static final int TYPE_IMAGE = 0;
     public static final int TYPE_VIDEO = 1;
     public static final int TYPE_INFO = 2;
+    private static final String TAG = "ViewListData";
     private ListView mListView;
     private int mTypeData;
     private List<String> mListPaths;
@@ -194,20 +195,21 @@ public class ViewListData extends BaseActivity {
 
             switch (mTypeData) {
                 case TYPE_IMAGE:
-                    pathView += "/" + nameClass + "/Hinh anh";
+                    pathView += "/" + nameClass + "/Hinh anh/";
                     filter = new FileUtils.ImageFilter();
                     break;
 
                 case TYPE_VIDEO:
-                    pathView += "/" + nameClass + "/Video";
+                    pathView += "/" + nameClass + "/Video/";
                     filter = new FileUtils.VideoFilter();
                     break;
 
                 case TYPE_INFO:
-                    pathView += "/" + nameClass + "/Thong tin chi tiet";
+                    pathView += "/" + nameClass + "/Thong tin chi tiet/";
                     filter = new FileUtils.DocumentFilter();
                     break;
             }
+
             return FileUtils.getImagePaths(pathView, filter);
         }
 
