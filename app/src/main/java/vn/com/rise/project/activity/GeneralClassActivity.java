@@ -64,20 +64,23 @@ public class GeneralClassActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent(GeneralClassActivity.this, ViewListData.class);
         switch (v.getId()) {
             case R.id.program_tree:
-                Toast.makeText(GeneralClassActivity.this, "program_tree", Toast.LENGTH_SHORT).show();
+                intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_PROGRAM_TREE);
+                startActivity(intent);
                 break;
 
             case R.id.schedule:
-                Toast.makeText(GeneralClassActivity.this, "schedule", Toast.LENGTH_SHORT).show();
-
+                intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_SCHEDULE);
+                startActivity(intent);
                 break;
 
             case R.id.price:
-                Toast.makeText(GeneralClassActivity.this, "price", Toast.LENGTH_SHORT).show();
-
+                intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_PRICE);
+                startActivity(intent);
                 break;
+
             case R.id.form_price:
                 Toast.makeText(GeneralClassActivity.this, "form_price", Toast.LENGTH_SHORT).show();
 

@@ -33,6 +33,9 @@ public class ViewListData extends BaseActivity {
     public static final int TYPE_IMAGE = 0;
     public static final int TYPE_VIDEO = 1;
     public static final int TYPE_INFO = 2;
+    public static final int TYPE_PROGRAM_TREE = -3;
+    public static final int TYPE_SCHEDULE = -4;
+    public static final int TYPE_PRICE = -5;
     private static final String TAG = "ViewListData";
     private ListView mListView;
     private int mTypeData;
@@ -82,25 +85,31 @@ public class ViewListData extends BaseActivity {
                                 type = "video/*";
                                 break;
                             case TYPE_INFO:
+                            case TYPE_PRICE:
+                            case TYPE_PROGRAM_TREE:
+                            case TYPE_SCHEDULE:
                                 type = FileUtils.getMIMETypeFromPath(file.getPath());
                                 break;
                         }
                         intent.setDataAndType(Uri.fromFile(file), type);
                         startActivity(intent);
                     } catch (ActivityNotFoundException e) {
-                        String showText = "Can't open this file - Please, download 3rd app to open file";
+                        String showText = "Can't open this file - Please, download 3rd app to open ";
                         switch (mTypeData) {
                             case TYPE_IMAGE:
-                                showText += "image";
+                                showText += "IMAGE";
                                 break;
                             case TYPE_VIDEO:
-                                showText += "video";
+                                showText += "VIDEO";
                                 break;
                             case TYPE_INFO:
-                                showText += "document";
+                            case TYPE_PRICE:
+                            case TYPE_PROGRAM_TREE:
+                            case TYPE_SCHEDULE:
+                                showText += "DOCUMENT";
                                 break;
                         }
-                        showText += "!!!";
+                        showText += " files!!!";
                         Toast.makeText(ViewListData.this, showText, Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -158,6 +167,9 @@ public class ViewListData extends BaseActivity {
                     viewHolder.imageView.setImageResource(R.drawable.icon_video);
                     break;
                 case TYPE_INFO:
+                case TYPE_PRICE:
+                case TYPE_PROGRAM_TREE:
+                case TYPE_SCHEDULE:
                     viewHolder.imageView.setImageResource(R.drawable.icon_document);
                     break;
             }
@@ -165,9 +177,9 @@ public class ViewListData extends BaseActivity {
             viewHolder.textView.setText(FileUtils.getFileNameFromPath(mListPaths.get(position)));
 
             if (position % 2 == 0) {
-                convertView.setBackgroundColor(getResources().getColor(R.color.gray_tran));
+                convertView.setBackgroundColor(getResources().getColor(R.color.DarkGray));
             } else {
-                convertView.setBackgroundColor(getResources().getColor(R.color.gray_press));
+                convertView.setBackgroundColor(getResources().getColor(R.color.LightSlateGray));
             }
 
             return convertView;
@@ -191,23 +203,46 @@ public class ViewListData extends BaseActivity {
             String pathView = Environment.getExternalStorageDirectory().getPath() + FileUtils.SD_ROOT_PATH;
 
             FilenameFilter filter = null;
-            String nameClass = Constants.getMapsValueClass().get(mPos);
 
-            switch (mTypeData) {
-                case TYPE_IMAGE:
-                    pathView += "/" + nameClass + "/Hinh anh/";
-                    filter = new FileUtils.ImageFilter();
-                    break;
+            if (mTypeData >= 0) {
+                //Main detail
+                String nameClass = Constants.getMapsValueClass().get(mPos);
 
-                case TYPE_VIDEO:
-                    pathView += "/" + nameClass + "/Video/";
-                    filter = new FileUtils.VideoFilter();
-                    break;
+                switch (mTypeData) {
+                    case TYPE_IMAGE:
+                        pathView += "/" + nameClass + "/Hinh anh";
+                        filter = new FileUtils.ImageFilter();
+                        break;
 
-                case TYPE_INFO:
-                    pathView += "/" + nameClass + "/Thong tin chi tiet/";
-                    filter = new FileUtils.DocumentFilter();
-                    break;
+                    case TYPE_VIDEO:
+                        pathView += "/" + nameClass + "/Video";
+                        filter = new FileUtils.VideoFilter();
+                        break;
+
+                    case TYPE_INFO:
+                        pathView += "/" + nameClass + "/Thong tin chi tiet";
+                        filter = new FileUtils.DocumentFilter();
+                        break;
+                }
+            } else {
+                //General
+                String nameClass = "Tong Quat";
+
+                switch (mTypeData) {
+                    case TYPE_PRICE:
+                        pathView += "/" + nameClass + "/Bieu Phi";
+                        break;
+
+                    case TYPE_PROGRAM_TREE:
+                        pathView += "/" + nameClass + "/Cay chuong trinh";
+                        break;
+
+                    case TYPE_SCHEDULE:
+                        pathView += "/" + nameClass + "/Lich hoc";
+                        break;
+                }
+
+                filter = new FileUtils.DocumentFilter();
             }
 
             return FileUtils.getImagePaths(pathView, filter);
