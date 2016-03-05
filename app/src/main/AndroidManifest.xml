@@ -32,6 +32,10 @@
         <activity
             android:name=".activity.ViewListData"
             android:screenOrientation="landscape"/>
+
+        <activity
+            android:name=".activity.PriceFromActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

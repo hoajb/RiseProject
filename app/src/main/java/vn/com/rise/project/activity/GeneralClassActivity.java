@@ -1,14 +1,15 @@
 package vn.com.rise.project.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import vn.com.rise.project.R;
+import vn.com.rise.project.Utils.Constants;
 
 /**
  * Created by hoanguyen on 3/2/16.
@@ -64,35 +65,38 @@ public class GeneralClassActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(GeneralClassActivity.this, ViewListData.class);
+        Intent intent;
         switch (v.getId()) {
             case R.id.program_tree:
+                intent = new Intent(GeneralClassActivity.this, ViewListData.class);
                 intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_PROGRAM_TREE);
                 startActivity(intent);
                 break;
 
             case R.id.schedule:
+                intent = new Intent(GeneralClassActivity.this, ViewListData.class);
                 intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_SCHEDULE);
                 startActivity(intent);
                 break;
 
             case R.id.price:
+                intent = new Intent(GeneralClassActivity.this, ViewListData.class);
                 intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_PRICE);
                 startActivity(intent);
                 break;
 
             case R.id.form_price:
-                Toast.makeText(GeneralClassActivity.this, "form_price", Toast.LENGTH_SHORT).show();
-
+                intent = new Intent(GeneralClassActivity.this, PriceFromActivity.class);
+                startActivity(intent);
                 break;
-            case R.id.website:
-                Toast.makeText(GeneralClassActivity.this, "website", Toast.LENGTH_SHORT).show();
 
+            case R.id.website:
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.WEBSITE_RISE));
+                startActivity(intent);
                 break;
 
             case R.id.button_back:
                 finish();
-
                 break;
         }
     }

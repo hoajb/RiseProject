@@ -8,6 +8,8 @@ import android.util.SparseArray;
 public class Constants {
     private static SparseArray<String> mapValueClass;
 
+    public static final String WEBSITE_RISE = "http://rise.com.vn/";
+
     public static SparseArray<String> getMapsValueClass() {
         if (mapValueClass == null) {
             mapValueClass = new SparseArray<>();

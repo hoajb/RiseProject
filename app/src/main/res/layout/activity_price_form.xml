@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <vn.com.rise.project.views.percentage.PercentLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <vn.com.rise.project.views.percentage.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edtLayoutName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_marginRightPercent="4%"
+                app:layout_widthPercent="48%">
+
+                <EditText
+                    android:id="@+id/edtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:hint="@string/hint_name"
+                    android:singleLine="true"
+                    android:textAppearance="@android:style/TextAppearance.Large"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:layout_widthPercent="30%"
+                app:ms_alignLabels="false"
+                app:ms_arrowColor="@color/DarkGray"
+                app:ms_arrowSize="16dp"
+                app:ms_baseColor="@color/White"
+                app:ms_enableErrorLabel="false"
+                app:ms_enableFloatingLabel="false"
+                app:ms_errorColor="@color/Red"
+                app:ms_floatingLabelColor="@color/CadetBlue"
+                app:ms_floatingLabelText="floating label"
+                app:ms_highlightColor="@color/LightGreen"
+                app:ms_hint="hint"
+                app:ms_hintColor="@color/Gray"
+                app:ms_multiline="false"
+                app:ms_thickness="2dp"/>
+
+        </vn.com.rise.project.views.percentage.PercentLinearLayout>
+
+        <vn.com.rise.project.views.percentage.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkboxEng"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/edtName"
+                android:layout_gravity="center_vertical"
+                app:layout_widthPercent="5%"/>
+
+            <TextView
+                android:id="@+id/txtLabelEng"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:padding="10dp"
+                android:text="@string/english"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Gray"
+                app:layout_widthPercent="30%"/>
+
+        </vn.com.rise.project.views.percentage.PercentLinearLayout>
+
+        <vn.com.rise.project.views.percentage.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edtLayoutNameFa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_marginRightPercent="4%"
+                app:layout_widthPercent="48%">
+
+                <EditText
+                    android:id="@+id/edtNameFa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:hint="@string/hint_nameFa"
+                    android:singleLine="true"
+                    android:textAppearance="@android:style/TextAppearance.Large"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edtLayoutNameMo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_widthPercent="48%">
+
+                <EditText
+                    android:id="@+id/edtNameMo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:hint="@string/hint_nameMo"
+                    android:singleLine="true"
+                    android:textAppearance="@android:style/TextAppearance.Large"/>
+            </android.support.design.widget.TextInputLayout>
+
+        </vn.com.rise.project.views.percentage.PercentLinearLayout>
+
+        <vn.com.rise.project.views.percentage.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edtLayoutPhoneFa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_marginRightPercent="4%"
+                app:layout_widthPercent="48%">
+
+                <EditText
+                    android:id="@+id/edtPhoneFa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:hint="@string/hint_phone"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:textAppearance="@android:style/TextAppearance.Large"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edtLayoutPhoneMo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_widthPercent="48%">
+
+                <EditText
+                    android:id="@+id/edtPhoneMo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:hint="@string/hint_phone"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:textAppearance="@android:style/TextAppearance.Large"/>
+            </android.support.design.widget.TextInputLayout>
+
+        </vn.com.rise.project.views.percentage.PercentLinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/edtLayoutAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edtAddress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:hint="@string/hint_address"
+                android:singleLine="true"
+                android:textAppearance="@android:style/TextAppearance.Large"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <vn.com.rise.project.views.percentage.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edtLayoutHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_marginRightPercent="4%"
+                app:layout_widthPercent="48%">
+
+                <EditText
+                    android:id="@+id/edtHour"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:hint="@string/hint_hour"
+                    android:singleLine="true"
+                    android:textAppearance="@android:style/TextAppearance.Large"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/txtPricePerHour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="10dp"
+                android:text="10002004"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                app:layout_widthPercent="30%"/>
+
+        </vn.com.rise.project.views.percentage.PercentLinearLayout>
+
+        <vn.com.rise.project.views.percentage.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtLabelDiscount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="10dp"
+                android:text="@string/hint_discount"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Gray"
+                app:layout_widthPercent="15%"/>
+
+            <TextView
+                android:id="@+id/txtDiscount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="right"
+                android:padding="10dp"
+                android:text="3000000"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                app:layout_marginRightPercent="4%"
+                app:layout_widthPercent="33%"/>
+
+            <TextView
+                android:id="@+id/txtDiscountVND"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="10dp"
+                android:text="@string/hint_vnd"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                app:layout_widthPercent="12%"/>
+
+
+        </vn.com.rise.project.views.percentage.PercentLinearLayout>
+
+        <vn.com.rise.project.views.percentage.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtDiscountTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="right"
+                android:padding="10dp"
+                android:text="30"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                app:layout_marginLeftPercent="25%"
+                app:layout_widthPercent="18%"/>
+
+            <TextView
+                android:id="@+id/txtDiscountTimePercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="right"
+                android:padding="10dp"
+                android:text="%"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                app:layout_marginRightPercent="4%"
+                app:layout_widthPercent="5%"/>
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spinnerDiscountTime"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:layout_widthPercent="30%"
+                app:ms_alignLabels="false"
+                app:ms_arrowColor="@color/DarkGray"
+                app:ms_arrowSize="16dp"
+                app:ms_baseColor="@color/White"
+                app:ms_enableErrorLabel="false"
+                app:ms_enableFloatingLabel="false"
+                app:ms_errorColor="@color/Red"
+                app:ms_floatingLabelColor="@color/CadetBlue"
+                app:ms_floatingLabelText="floating label"
+                app:ms_highlightColor="@color/LightGreen"
+                app:ms_hint="hint"
+                app:ms_hintColor="@color/Gray"
+                app:ms_multiline="false"
+                app:ms_thickness="2dp"/>
+
+        </vn.com.rise.project.views.percentage.PercentLinearLayout>
+
+
+        <vn.com.rise.project.views.percentage.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtDiscountBro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="right"
+                android:padding="10dp"
+                android:text="30"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                app:layout_marginLeftPercent="25%"
+                app:layout_widthPercent="18%"/>
+
+            <TextView
+                android:id="@+id/txtDiscountBroPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="right"
+                android:padding="10dp"
+                android:text="%"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                app:layout_marginRightPercent="4%"
+                app:layout_widthPercent="5%"/>
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spinnerDiscountBro"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:layout_widthPercent="30%"
+                app:ms_alignLabels="false"
+                app:ms_arrowColor="@color/DarkGray"
+                app:ms_arrowSize="16dp"
+                app:ms_baseColor="@color/White"
+                app:ms_enableErrorLabel="false"
+                app:ms_enableFloatingLabel="false"
+                app:ms_errorColor="@color/Red"
+                app:ms_floatingLabelColor="@color/CadetBlue"
+                app:ms_floatingLabelText="floating label"
+                app:ms_highlightColor="@color/LightGreen"
+                app:ms_hint="hint"
+                app:ms_hintColor="@color/Gray"
+                app:ms_multiline="false"
+                app:ms_thickness="2dp"/>
+
+        </vn.com.rise.project.views.percentage.PercentLinearLayout>
+
+
+        <vn.com.rise.project.views.percentage.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtLabelTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="10dp"
+                android:text="@string/hint_total"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Gray"
+                app:layout_widthPercent="15%"/>
+
+            <TextView
+                android:id="@+id/txtTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="10dp"
+                android:text="1000000000"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                app:layout_marginRightPercent="4%"
+                app:layout_widthPercent="33%"/>
+
+            <Button
+                android:id="@+id/buttonCal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hint_calculate"
+                app:layout_widthPercent="15%"/>
+
+        </vn.com.rise.project.views.percentage.PercentLinearLayout>
+
+        <vn.com.rise.project.views.percentage.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtLabelGift"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:padding="10dp"
+                android:text="@string/gift"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Gray"
+                app:layout_widthPercent="15%"/>
+
+            <CheckBox
+                android:id="@+id/checkboxBackpack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                app:layout_widthPercent="5%"/>
+
+            <TextView
+                android:id="@+id/txtLabelBackpack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:padding="10dp"
+                android:text="@string/backpack"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                app:layout_widthPercent="20%"/>
+
+            <CheckBox
+                android:id="@+id/checkboxShirt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                app:layout_widthPercent="5%"/>
+
+            <TextView
+                android:id="@+id/txtLabelShirt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:padding="10dp"
+                android:text="@string/shirt"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                app:layout_widthPercent="20%"/>
+
+            <CheckBox
+                android:id="@+id/checkboxVoucher"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                app:layout_widthPercent="5%"/>
+
+            <TextView
+                android:id="@+id/txtLabelVoucher"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:padding="10dp"
+                android:text="@string/voucher"
+                android:textAppearance="@android:style/TextAppearance.Large"
+                app:layout_widthPercent="20%"/>
+
+        </vn.com.rise.project.views.percentage.PercentLinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/edtLayoutOther"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_marginLeftPercent="15%"
+            app:layout_widthPercent="60%">
+
+            <EditText
+                android:id="@+id/edtOther"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:hint="@string/hint_other"
+                android:singleLine="false"
+                android:textAppearance="@android:style/TextAppearance.Large"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/edtLayoutNote"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/edtNote"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:hint="@string/hint_note"
+                android:singleLine="false"
+                android:textAppearance="@android:style/TextAppearance.Large"/>
+        </android.support.design.widget.TextInputLayout>
+    </vn.com.rise.project.views.percentage.PercentLinearLayout>
+</ScrollView>

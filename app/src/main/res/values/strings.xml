@@ -15,7 +15,24 @@
     <string name="class_general_website">Website Trường</string>
 
     <string name="empty">Dữ Liệu Rỗng</string>
-
+    <string name="hint_name">Name</string>
+    <string name="hint_other">Other</string>
+    <string name="hint_note">Note</string>
+    <string name="hint_hour">Hour</string>
+    <string name="hint_discount">Discount</string>
+    <string name="hint_total">Total</string>
+    <string name="hint_calculate">Calculate</string>
+    <string name="hint_phone">Phone</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_address">Address</string>
+    <string name="english">Study English?</string>
+    <string name="gift">Gift</string>
+    <string name="backpack">Backpack</string>
+    <string name="shirt">Shirt</string>
+    <string name="voucher">Voucher</string>
+    <string name="hint_vnd">(VND)</string>
+    <string name="hint_nameFa">Father\'s Name</string>
+    <string name="hint_nameMo">Mother\'s Name</string>
 
     <!--Margin-->
     <!--<string name="button_margin_left">10%</string>-->
