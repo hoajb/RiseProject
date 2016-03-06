@@ -22,6 +22,7 @@
     <string name="hint_discount">Discount</string>
     <string name="hint_total">Total</string>
     <string name="hint_calculate">Calculate</string>
+    <string name="hint_save">Save</string>
     <string name="hint_phone">Phone</string>
     <string name="hint_email">Email</string>
     <string name="hint_address">Address</string>
@@ -32,7 +33,15 @@
     <string name="voucher">Voucher</string>
     <string name="hint_vnd">(VND)</string>
     <string name="hint_nameFa">Father\'s Name</string>
+    <string name="hint_phoneFa">Father\'s Phone</string>
+    <string name="hint_emailFa">Father\'s Email</string>
     <string name="hint_nameMo">Mother\'s Name</string>
+    <string name="hint_phoneMo">Mother\'s Phone</string>
+    <string name="hint_emailMo">Mother\'s Email</string>
+
+    <string name="err_title">Cảnh báo</string>
+    <string name="err_missing_name">Bạn chưa nhập trường name</string>
+    <string name="hint_age">Age</string>
 
     <!--Margin-->
     <!--<string name="button_margin_left">10%</string>-->

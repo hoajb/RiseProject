@@ -23,6 +23,7 @@ public class FileUtils {
 
     private static final String TAG = "ImageGalleryFragment";
     public static final String SD_ROOT_PATH = "/RISEVietnam";
+    public static final String SD_OUTPUT_PATH = "/InfoOutput";
     public static final String FILE_NAME_SAVE = "Rise_Info";
     public static final String LINK_WEB_ABOUT = "http://rise.com.vn/vn/gioi-thieu";
 
