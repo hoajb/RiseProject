@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vn.com.rise.project.views.percentage.PercentLinearLayout
+<android.support.percent.PercentRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:gravity="center">
 
     <ImageView
         android:id="@id/id_circle_menu_item_image"
@@ -13,18 +12,24 @@
         android:layout_height="wrap_content"
         android:contentDescription="@null"
         android:visibility="gone"
-        app:layout_heightPercent="75%"
-        app:layout_widthPercent="75%"/>
+        app:layout_heightPercent="60%"
+        app:layout_marginLeftPercent="20%"
+        app:layout_marginRightPercent="20%"
+        app:layout_marginTopPercent="20%"
+        app:layout_widthPercent="60%"/>
+
 
     <vn.com.rise.project.views.AutoResizeTextView
         android:id="@id/id_circle_menu_item_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/id_circle_menu_item_image"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:visibility="gone"
-        app:layout_heightPercent="25%"/>
+        app:layout_heightPercent="20%"/>
 
-</vn.com.rise.project.views.percentage.PercentLinearLayout>
+
+</android.support.percent.PercentRelativeLayout>

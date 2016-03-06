@@ -17,9 +17,12 @@ public class InfoData {
     private String emailFa = "";
     private String address = "";
     private int hour = 0;
+    private int moneyPerHour = 0;
     private int discount = 0;
     private int discountTime = 0;
+    private String discountTimeLabel = "";
     private int discountBro = 0;
+    private String discountBroLabel = "";
     private int total = 0;
     private boolean giftBackpack = false;
     private boolean giftShirt = false;
@@ -28,6 +31,14 @@ public class InfoData {
     private String note = "";
 
     public InfoData() {
+    }
+
+    public int getMoneyPerHour() {
+        return moneyPerHour;
+    }
+
+    public void setMoneyPerHour(int pMoneyPerHour) {
+        moneyPerHour = pMoneyPerHour;
     }
 
     public String getName() {
@@ -188,5 +199,21 @@ public class InfoData {
 
     public void setNote(String pNote) {
         note = pNote;
+    }
+
+    public String getDiscountTimeLabel() {
+        return discountTimeLabel;
+    }
+
+    public void setDiscountTimeLabel(String pDiscountTimeLabel) {
+        discountTimeLabel = pDiscountTimeLabel;
+    }
+
+    public String getDiscountBroLabel() {
+        return discountBroLabel;
+    }
+
+    public void setDiscountBroLabel(String pDiscountBroLabel) {
+        discountBroLabel = pDiscountBroLabel;
     }
 }

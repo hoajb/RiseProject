@@ -14,12 +14,12 @@ public class HomeActivity extends BaseActivity {
 
     private String[] mItemTexts;
     private int[] mItemImgs = new int[]{
-            R.drawable.icon_1,
-            R.drawable.icon_2,
-            R.drawable.icon_3,
-            R.drawable.icon_4,
-            R.drawable.icon_5,
-            R.drawable.icon_6,
+            R.drawable.icon1,
+            R.drawable.icon2,
+            R.drawable.icon3,
+            R.drawable.icon4,
+            R.drawable.icon5,
+            R.drawable.icon6,
     };
 
     @Override

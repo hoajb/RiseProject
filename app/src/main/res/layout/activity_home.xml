@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/DimGray"
+    android:background="@drawable/icon_background_gray480"
     android:gravity="center"
     tools:context=".activity.HomeActivity">
 
@@ -18,7 +18,7 @@
 
     <vn.com.rise.project.views.CircleMenuLayout
         android:id="@+id/id_menulayout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@drawable/circle_bg3"
         android:padding="100dp">

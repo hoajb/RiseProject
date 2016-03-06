@@ -107,7 +107,7 @@
             app:layout_widthPercent="30%"/>
 
         <CheckBox
-            android:id="@+id/checkboxEng"
+            android:id="@+id/checkboxEngYes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_below="@id/edtName"

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/icon_background_gray480"
     android:orientation="vertical">
 
     <ListView
@@ -16,7 +17,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="@string/empty"
-        android:textColor="@color/Black"
+        android:textColor="@color/White"
         android:textSize="25dp"
         android:visibility="gone"/>
 

@@ -43,6 +43,14 @@
     <string name="err_missing_name">Bạn chưa nhập trường name</string>
     <string name="hint_age">Age</string>
 
+    <string name="discount_whole_year">Whole year</string>
+    <string name="discount_half_year">Half year</string>
+    <string name="discount_none">None</string>
+    <string name="discount_bro">Brothers\/Sisters</string>
+    <string name="discount_other">Other</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+
     <!--Margin-->
     <!--<string name="button_margin_left">10%</string>-->
     <!--<string name="button_margin_padding">5%</string>-->
