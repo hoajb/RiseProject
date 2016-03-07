@@ -238,9 +238,18 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
                 } catch (NumberFormatException e) {
                     data.setDiscount(0);
                 }
+                if (mSpinnerTime.getSelectedItemPosition() >= 0) {
+                    data.setDiscountTimeLabel((String) mSpinnerTime.getSelectedItem());
+                } else {
+                    data.setDiscountTimeLabel(Constants.getListDiscountTime(PriceFromActivity.this).get(0));
+                }
 
-                data.setDiscountTimeLabel((String) mSpinnerTime.getSelectedItem());
-                data.setDiscountBroLabel((String) mSpinnerBro.getSelectedItem());
+                if (mSpinnerBro.getSelectedItemPosition() >= 0) {
+                    data.setDiscountBroLabel((String) mSpinnerBro.getSelectedItem());
+                } else {
+                    data.setDiscountBroLabel(Constants.getListDiscountBro(PriceFromActivity.this).get(0));
+                }
+
                 try {
                     data.setDiscountTime(Integer.valueOf(mEditTextDiscountTime.getText().toString()));
                 } catch (NumberFormatException e) {

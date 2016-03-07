@@ -174,7 +174,15 @@ public class IOHelper {
         c.setCellValue(res.getString(R.string.hint_hour));
         c = row.createCell(COLUMN_VALUE);
         c.setCellValue(data.getHour());
-        //TODO price/hour
+
+        //**** Money/Hour *****
+        row = sheetInfo.createRow(++jump);
+        c = row.createCell(COLUMN_NUMBER);
+        c.setCellValue(jump + 1);
+        c = row.createCell(COLUMN_TITLE);
+        c.setCellValue(res.getString(R.string.hint_money_hour));
+        c = row.createCell(COLUMN_VALUE);
+        c.setCellValue(data.getMoneyPerHour());
 
         //**** Discount *****
         row = sheetInfo.createRow(++jump);
@@ -185,14 +193,49 @@ public class IOHelper {
         c = row.createCell(COLUMN_VALUE);
         c.setCellValue(data.getDiscount());
 
-//    TODO    //**** Discount Time ***** Bro?
-//        row = sheetInfo.createRow(++jump);
-//        c = row.createCell(COLUMN_NUMBER);
-//        c.setCellValue(jump + 1);
-//        c = row.createCell(COLUMN_TITLE);
-//        c.setCellValue(res.getString(R.string.hint_discount));
-//        c = row.createCell(COLUMN_VALUE);
-//        c.setCellValue(data.getDiscount());
+        //**** Discount Time Label*****
+        row = sheetInfo.createRow(++jump);
+        c = row.createCell(COLUMN_NUMBER);
+        c.setCellValue(jump + 1);
+        c = row.createCell(COLUMN_TITLE);
+        c.setCellValue(res.getString(R.string.hint_discount1));
+        c = row.createCell(COLUMN_VALUE);
+        String value2 = data.getDiscountTimeLabel();
+        if (value2.toLowerCase().equals(R.string.hint_discount)) {
+            value2 = res.getString(R.string.discount_none);
+        }
+        c.setCellValue(value2);
+
+        //**** Discount Time Value*****
+        row = sheetInfo.createRow(++jump);
+        c = row.createCell(COLUMN_NUMBER);
+        c.setCellValue(jump + 1);
+        c = row.createCell(COLUMN_TITLE);
+        c.setCellValue(res.getString(R.string.hint_discount1_value));
+        c = row.createCell(COLUMN_VALUE);
+        c.setCellValue(data.getDiscountTime());
+
+        //**** Discount Bro Label*****
+        row = sheetInfo.createRow(++jump);
+        c = row.createCell(COLUMN_NUMBER);
+        c.setCellValue(jump + 1);
+        c = row.createCell(COLUMN_TITLE);
+        c.setCellValue(res.getString(R.string.hint_discount2));
+        c = row.createCell(COLUMN_VALUE);
+        String value22 = data.getDiscountBroLabel();
+        if (value22.toLowerCase().equals(R.string.hint_discount)) {
+            value22 = res.getString(R.string.discount_none);
+        }
+        c.setCellValue(value22);
+
+        //**** Discount Bro Value*****
+        row = sheetInfo.createRow(++jump);
+        c = row.createCell(COLUMN_NUMBER);
+        c.setCellValue(jump + 1);
+        c = row.createCell(COLUMN_TITLE);
+        c.setCellValue(res.getString(R.string.hint_discount2_value));
+        c = row.createCell(COLUMN_VALUE);
+        c.setCellValue(data.getDiscountBro());
 
         //**** Total *****
         row = sheetInfo.createRow(++jump);
