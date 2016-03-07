@@ -62,6 +62,26 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
         setContentView(R.layout.activity_price_form);
         initView();
         setData();
+        fakeData();
+    }
+
+    private void fakeData() {
+        mEditTextName.setText("Nguyen Minh Hoa");
+        mEditTextNameFa.setText("Nguyen Minh Father");
+        mEditTextNameMo.setText("Nguyen Minh Mother");
+        mEditTextPhoneFa.setText("09123456789");
+        mEditTextPhoneMo.setText("09876543210");
+        mEditTextEmailFa.setText("father.email@gmail.com");
+        mEditTextEmailMo.setText("mother.email@gmail.com");
+        mEditTextAddress.setText("Big C To Hien Thanh Quan 10 HCM");
+        mEditTextHour.setText("150");
+        mEditTextMoneyPerHour.setText("150000");
+        mEditTextDiscount.setText("3000000");
+        mEditTextOther.setText("Pen");
+        mEditTextNote.setText("Nothing More");
+        mCheckBoxBackpack.setChecked(true);
+        mCheckBoxVoucher.setChecked(true);
+        mSpinnerAge.setSelection(10);
     }
 
     private void initView() {
@@ -189,10 +209,10 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
                 if (!validateInput()) {
                     return;
                 }
-                Toast.makeText(PriceFromActivity.this, "Saving", Toast.LENGTH_SHORT).show();
+
                 InfoData data = new InfoData();
                 data.setName(mEditTextName.getText().toString());
-                data.setAge((Integer.valueOf((String) mSpinnerAge.getSelectedItem())));
+                data.setAge((Integer) mSpinnerAge.getSelectedItem());
                 data.setNameFa(mEditTextNameFa.getText().toString());
                 data.setPhoneFa(mEditTextPhoneFa.getText().toString());
                 data.setEmailFa(mEditTextEmailFa.getText().toString());
@@ -247,11 +267,37 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
                 data.setOther(mEditTextOther.getText().toString());
                 data.setNote(mEditTextNote.getText().toString());
 
-
-                IOHelper.instance().saveExcelFile(this, data);
-
+                if (IOHelper.instance().saveExcelFile(this, data)) {
+                    clearFieldData();
+                    Toast.makeText(PriceFromActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(PriceFromActivity.this, "Save Error", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    private void clearFieldData() {
+        mEditTextName.setText("");
+        mSpinnerAge.setSelection(0);
+        mEditTextNameFa.setText("");
+        mEditTextNameMo.setText("");
+        mEditTextPhoneFa.setText("");
+        mEditTextPhoneMo.setText("");
+        mEditTextEmailFa.setText("");
+        mEditTextEmailMo.setText("");
+        mEditTextAddress.setText("");
+        mEditTextHour.setText("");
+        mEditTextMoneyPerHour.setText("");
+        mEditTextDiscount.setText("");
+        mEditTextDiscountTime.setText("0");
+        mEditTextDiscountBro.setText("0");
+        mEditTextOther.setText("");
+        mEditTextNote.setText("");
+        mTextViewTotal.setText("0");
+        mCheckBoxEngNo.setChecked(true);
+        mCheckBoxBackpack.setChecked(false);
+        mCheckBoxShirt.setChecked(false);
+        mCheckBoxVoucher.setChecked(false);
     }
 
     private boolean validateInput() {

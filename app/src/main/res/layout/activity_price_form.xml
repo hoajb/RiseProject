@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/icon_background_gray480"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/LightGrey">
 
     <vn.com.rise.project.views.percentage.PercentLinearLayout
         android:layout_width="match_parent"
@@ -32,7 +32,9 @@
                     android:ellipsize="end"
                     android:hint="@string/hint_name"
                     android:singleLine="true"
-                    android:textAppearance="@android:style/TextAppearance.Large"/>
+                    android:textAppearance="@android:style/TextAppearance.Large"
+                    android:textColor="@color/Black"
+                    android:textColorHighlight="@color/Gray"/>
             </android.support.design.widget.TextInputLayout>
 
 
@@ -41,10 +43,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                app:layout_widthPercent="15%"
                 app:ms_alignLabels="false"
                 app:ms_arrowColor="@color/DarkGray"
                 app:ms_arrowSize="16dp"
-                app:ms_baseColor="@color/White"
+                app:ms_baseColor="@color/DarkGray"
                 app:ms_enableErrorLabel="false"
                 app:ms_enableFloatingLabel="true"
                 app:ms_errorColor="@color/Red"
@@ -54,7 +57,7 @@
                 app:ms_hint="@string/hint_age"
                 app:ms_hintColor="@color/Gray"
                 app:ms_multiline="false"
-                app:ms_thickness="2dp"/>
+                app:ms_thickness="1dp"/>
 
             <TextView
                 android:id="@+id/errorAge"
@@ -87,6 +90,7 @@
                 android:layout_gravity="center_vertical"
                 android:text="@string/yes"
                 android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Black"
                 app:layout_marginRightPercent="10%"/>
 
             <CheckBox
@@ -96,7 +100,8 @@
                 android:layout_gravity="center_vertical"
                 android:checked="true"
                 android:text="@string/no"
-                android:textAppearance="@android:style/TextAppearance.Large"/>
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Black"/>
 
         </vn.com.rise.project.views.percentage.PercentLinearLayout>
 
@@ -119,7 +124,10 @@
                     android:ellipsize="end"
                     android:hint="@string/hint_nameFa"
                     android:singleLine="true"
-                    android:textAppearance="@android:style/TextAppearance.Large"/>
+                    android:textAppearance="@android:style/TextAppearance.Large"
+                    android:textColor="@color/Black"
+                    android:textColorHighlight="@color/Gray"
+                    android:textColorHint="@color/Wheat"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -135,7 +143,10 @@
                     android:ellipsize="end"
                     android:hint="@string/hint_nameMo"
                     android:singleLine="true"
-                    android:textAppearance="@android:style/TextAppearance.Large"/>
+                    android:textAppearance="@android:style/TextAppearance.Large"
+                    android:textColor="@color/Black"
+                    android:textColorHighlight="@color/Gray"
+                    android:textColorHint="@color/Wheat"/>
             </android.support.design.widget.TextInputLayout>
 
         </vn.com.rise.project.views.percentage.PercentLinearLayout>
@@ -160,7 +171,10 @@
                     android:hint="@string/hint_phone"
                     android:inputType="phone"
                     android:singleLine="true"
-                    android:textAppearance="@android:style/TextAppearance.Large"/>
+                    android:textAppearance="@android:style/TextAppearance.Large"
+                    android:textColor="@color/Black"
+                    android:textColorHighlight="@color/Gray"
+                    android:textColorHint="@color/WhiteSmoke"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -177,7 +191,10 @@
                     android:hint="@string/hint_phone"
                     android:inputType="phone"
                     android:singleLine="true"
-                    android:textAppearance="@android:style/TextAppearance.Large"/>
+                    android:textAppearance="@android:style/TextAppearance.Large"
+                    android:textColor="@color/Black"
+                    android:textColorHighlight="@color/Gray"
+                    android:textColorHint="@color/NavajoWhite"/>
             </android.support.design.widget.TextInputLayout>
 
         </vn.com.rise.project.views.percentage.PercentLinearLayout>
@@ -202,7 +219,9 @@
                     android:hint="@string/hint_email"
                     android:inputType="textEmailAddress"
                     android:singleLine="true"
-                    android:textAppearance="@android:style/TextAppearance.Large"/>
+                    android:textAppearance="@android:style/TextAppearance.Large"
+                    android:textColor="@color/Black"
+                    android:textColorHighlight="@color/Gray"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -219,7 +238,9 @@
                     android:hint="@string/hint_email"
                     android:inputType="textEmailAddress"
                     android:singleLine="true"
-                    android:textAppearance="@android:style/TextAppearance.Large"/>
+                    android:textAppearance="@android:style/TextAppearance.Large"
+                    android:textColor="@color/Black"
+                    android:textColorHighlight="@color/Gray"/>
             </android.support.design.widget.TextInputLayout>
 
         </vn.com.rise.project.views.percentage.PercentLinearLayout>
@@ -237,7 +258,9 @@
                 android:ellipsize="end"
                 android:hint="@string/hint_address"
                 android:singleLine="true"
-                android:textAppearance="@android:style/TextAppearance.Large"/>
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/Gray"/>
         </android.support.design.widget.TextInputLayout>
 
         <vn.com.rise.project.views.percentage.PercentLinearLayout
@@ -261,7 +284,9 @@
                     android:hint="@string/hint_hour"
                     android:inputType="number"
                     android:singleLine="true"
-                    android:textAppearance="@android:style/TextAppearance.Large"/>
+                    android:textAppearance="@android:style/TextAppearance.Large"
+                    android:textColor="@color/Black"
+                    android:textColorHighlight="@color/Gray"/>
             </android.support.design.widget.TextInputLayout>
 
 
@@ -289,7 +314,9 @@
                     android:gravity="right"
                     android:inputType="number"
                     android:singleLine="true"
-                    android:textAppearance="@android:style/TextAppearance.Large"/>
+                    android:textAppearance="@android:style/TextAppearance.Large"
+                    android:textColor="@color/Black"
+                    android:textColorHighlight="@color/Gray"/>
             </android.support.design.widget.TextInputLayout>
 
             <TextView
@@ -349,6 +376,8 @@
                     android:inputType="number"
                     android:singleLine="true"
                     android:textAppearance="@android:style/TextAppearance.Large"
+                    android:textColor="@color/Black"
+                    android:textColorHighlight="@color/Gray"
                     tools:text="3000000"/>
             </android.support.design.widget.TextInputLayout>
 
@@ -364,13 +393,14 @@
                 android:id="@+id/spinnerDiscountTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/Black"
                 app:layout_marginLeftPercent="5%"
                 app:layout_marginRightPercent="4%"
                 app:layout_widthPercent="30%"
                 app:ms_alignLabels="false"
                 app:ms_arrowColor="@color/DarkGray"
                 app:ms_arrowSize="16dp"
-                app:ms_baseColor="@color/White"
+                app:ms_baseColor="@color/DarkGray"
                 app:ms_enableErrorLabel="false"
                 app:ms_enableFloatingLabel="true"
                 app:ms_errorColor="@color/Red"
@@ -380,7 +410,7 @@
                 app:ms_hint="@string/hint_discount"
                 app:ms_hintColor="@color/Gray"
                 app:ms_multiline="false"
-                app:ms_thickness="2dp"/>
+                app:ms_thickness="1dp"/>
 
             <!--<TextView-->
             <!--android:id="@+id/txtDiscountTime"-->
@@ -409,7 +439,9 @@
                     android:inputType="number"
                     android:singleLine="true"
                     android:text="0"
-                    android:textAppearance="@android:style/TextAppearance.Large"/>
+                    android:textAppearance="@android:style/TextAppearance.Large"
+                    android:textColor="@color/Black"
+                    android:textColorHighlight="@color/Gray"/>
             </android.support.design.widget.TextInputLayout>
 
 
@@ -437,13 +469,14 @@
                 android:id="@+id/spinnerDiscountBro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/Black"
                 app:layout_marginLeftPercent="5%"
                 app:layout_marginRightPercent="4%"
                 app:layout_widthPercent="30%"
                 app:ms_alignLabels="false"
                 app:ms_arrowColor="@color/DarkGray"
                 app:ms_arrowSize="16dp"
-                app:ms_baseColor="@color/White"
+                app:ms_baseColor="@color/DarkGray"
                 app:ms_enableErrorLabel="false"
                 app:ms_enableFloatingLabel="true"
                 app:ms_errorColor="@color/Red"
@@ -453,7 +486,7 @@
                 app:ms_hint="@string/hint_discount"
                 app:ms_hintColor="@color/Gray"
                 app:ms_multiline="false"
-                app:ms_thickness="2dp"/>
+                app:ms_thickness="1dp"/>
 
             <!--<TextView-->
             <!--android:id="@+id/txtDiscountBro"-->
@@ -482,7 +515,9 @@
                     android:inputType="number"
                     android:singleLine="true"
                     android:text="0"
-                    android:textAppearance="@android:style/TextAppearance.Large"/>
+                    android:textAppearance="@android:style/TextAppearance.Large"
+                    android:textColor="@color/Black"
+                    android:textColorHighlight="@color/Gray"/>
             </android.support.design.widget.TextInputLayout>
 
 
@@ -525,7 +560,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:padding="10dp"
+                android:text="0"
                 android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Black"
                 app:layout_marginLeftPercent="19%"
                 app:layout_marginRightPercent="4%"
                 app:layout_widthPercent="30%"
@@ -535,7 +572,7 @@
                 android:id="@+id/buttonCal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
+                style="@style/ButtonStyle"
                 android:text="@string/hint_calculate"
                 android:textAppearance="@android:style/TextAppearance.Large"/>
 
@@ -573,6 +610,7 @@
                 android:padding="10dp"
                 android:text="@string/backpack"
                 android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Black"
                 app:layout_widthPercent="20%"/>
 
             <CheckBox
@@ -590,6 +628,7 @@
                 android:padding="10dp"
                 android:text="@string/shirt"
                 android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Black"
                 app:layout_widthPercent="20%"/>
 
             <CheckBox
@@ -607,6 +646,7 @@
                 android:padding="10dp"
                 android:text="@string/voucher"
                 android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Black"
                 app:layout_widthPercent="20%"/>
 
         </vn.com.rise.project.views.percentage.PercentLinearLayout>
@@ -625,7 +665,9 @@
                 android:ellipsize="end"
                 android:hint="@string/hint_other"
                 android:singleLine="false"
-                android:textAppearance="@android:style/TextAppearance.Large"/>
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/Gray"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -640,7 +682,9 @@
                 android:ellipsize="end"
                 android:hint="@string/hint_note"
                 android:singleLine="false"
-                android:textAppearance="@android:style/TextAppearance.Large"/>
+                android:textAppearance="@android:style/TextAppearance.Large"
+                android:textColor="@color/Black"
+                android:textColorHighlight="@color/Gray"/>
         </android.support.design.widget.TextInputLayout>
 
         <Button
@@ -648,6 +692,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
+            style="@style/ButtonStyle"
             android:text="@string/hint_save"
             android:textAppearance="@android:style/TextAppearance.Large"
             app:layout_marginTopPercent="5%"

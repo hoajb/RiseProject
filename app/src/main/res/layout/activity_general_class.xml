@@ -5,17 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/icon_background_gray480"
+    android:orientation="vertical"
     tools:context=".activity.MainClassDetailActivity">
 
     <TextView
         android:id="@+id/title_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/LightGrey"
+        android:background="@drawable/bg_title_2"
         android:gravity="center"
         android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="@color/White"
         app:layout_heightPercent="10%"
         app:layout_marginLeftPercent="5%"
         app:layout_marginTopPercent="5%"
@@ -24,43 +25,43 @@
 
     <Button
         android:id="@+id/program_tree"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/class_general_program_tree"
-        app:layout_heightPercent="10%"
         app:layout_marginLeftPercent="10%"
         app:layout_marginTopPercent="5%"
         app:layout_widthPercent="60%"/>
 
     <Button
         android:id="@+id/schedule"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/program_tree"
         android:text="@string/class_general_schedule"
-        app:layout_heightPercent="10%"
         app:layout_marginLeftPercent="10%"
         app:layout_marginTopPercent="2%"
         app:layout_widthPercent="60%"/>
 
     <Button
         android:id="@+id/price"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/schedule"
         android:text="@string/class_general_price"
-        app:layout_heightPercent="10%"
         app:layout_marginLeftPercent="10%"
         app:layout_marginTopPercent="2%"
         app:layout_widthPercent="60%"/>
 
     <Button
         android:id="@+id/form_price"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/price"
         android:text="@string/class_general_form_price"
-        app:layout_heightPercent="10%"
         app:layout_marginLeftPercent="10%"
         app:layout_marginTopPercent="2%"
         app:layout_widthPercent="60%"/>
@@ -68,11 +69,11 @@
 
     <Button
         android:id="@+id/website"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/price"
         android:text="@string/class_general_website"
-        app:layout_heightPercent="10%"
         app:layout_marginLeftPercent="10%"
         app:layout_marginTopPercent="2%"
         app:layout_widthPercent="60%"/>
