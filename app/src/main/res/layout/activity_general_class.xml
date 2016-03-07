@@ -25,7 +25,7 @@
             android:clickable="true"
             android:contentDescription="@null"
             android:scaleType="centerInside"
-            android:src="@drawable/icon_back"/>
+            android:src="@drawable/state_button_back"/>
 
         <ImageView
             android:id="@+id/button_home"
@@ -34,7 +34,7 @@
             android:clickable="true"
             android:contentDescription="@null"
             android:scaleType="centerInside"
-            android:src="@drawable/icon_home"/>
+            android:src="@drawable/state_button_home"/>
 
         <TextView
             android:id="@+id/title_info"
