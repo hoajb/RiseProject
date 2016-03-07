@@ -28,16 +28,28 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="104.0dip"
-                android:layout_height="104.0dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:background="@drawable/turnplate_center_unlogin"/>
+                android:src="@drawable/icon_menu_center_pressed"/>
 
             <ImageView
                 android:layout_width="116.0dip"
                 android:layout_height="116.0dip"
                 android:layout_centerInParent="true"
-                android:background="@drawable/turnplate_mask_unlogin_normal"/>
+                android:src="@drawable/turnplate_mask_unlogin_normal"/>
+
+            <!--<ImageView-->
+            <!--android:layout_width="104.0dip"-->
+            <!--android:layout_height="104.0dip"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:background="@drawable/state_button_menu_center"/>-->
+
+            <!--<ImageView-->
+            <!--android:layout_width="116.0dip"-->
+            <!--android:layout_height="116.0dip"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:background="@drawable/turnplate_mask_unlogin_normal"/>-->
         </RelativeLayout>
     </vn.com.rise.project.views.CircleMenuLayout>
 
