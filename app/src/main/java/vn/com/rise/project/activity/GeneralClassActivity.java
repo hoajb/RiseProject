@@ -24,6 +24,7 @@ public class GeneralClassActivity extends BaseActivity implements View.OnClickLi
     private Button mButtonFormPrice;
     private Button mButtonWebsite;
     private View mButtonBack;
+    private View mButtonHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class GeneralClassActivity extends BaseActivity implements View.OnClickLi
         mButtonFormPrice = (Button) findViewById(R.id.form_price);
         mButtonWebsite = (Button) findViewById(R.id.website);
         mButtonBack = findViewById(R.id.button_back);
+        mButtonHome = findViewById(R.id.button_home);
 
         mButtonProgramTree.setOnClickListener(this);
         mButtonSchedule.setOnClickListener(this);
@@ -48,6 +50,7 @@ public class GeneralClassActivity extends BaseActivity implements View.OnClickLi
         mButtonFormPrice.setOnClickListener(this);
         mButtonWebsite.setOnClickListener(this);
         mButtonBack.setOnClickListener(this);
+        mButtonHome.setOnClickListener(this);
     }
 
     private void setData() {
@@ -70,34 +73,46 @@ public class GeneralClassActivity extends BaseActivity implements View.OnClickLi
             case R.id.program_tree:
                 intent = new Intent(GeneralClassActivity.this, ViewListData.class);
                 intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_PROGRAM_TREE);
-                startActivity(intent);
+                intent.putExtra(ViewListData.EXTRA_TITLE, getString(R.string.class_general_program_tree));
+                startActivityForResult(intent, ViewListData.REQUEST_CODE);
                 break;
 
             case R.id.schedule:
                 intent = new Intent(GeneralClassActivity.this, ViewListData.class);
                 intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_SCHEDULE);
-                startActivity(intent);
+                intent.putExtra(ViewListData.EXTRA_TITLE, getString(R.string.class_general_schedule));
+                startActivityForResult(intent, ViewListData.REQUEST_CODE);
                 break;
 
             case R.id.price:
                 intent = new Intent(GeneralClassActivity.this, ViewListData.class);
                 intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_PRICE);
-                startActivity(intent);
+                intent.putExtra(ViewListData.EXTRA_TITLE, getString(R.string.class_general_price));
+                startActivityForResult(intent, ViewListData.REQUEST_CODE);
                 break;
 
             case R.id.form_price:
                 intent = new Intent(GeneralClassActivity.this, PriceFromActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, ViewListData.REQUEST_CODE);
                 break;
 
             case R.id.website:
                 intent = new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.WEBSITE_RISE));
-                startActivity(intent);
+                startActivityForResult(intent, ViewListData.REQUEST_CODE);
                 break;
 
             case R.id.button_back:
+            case R.id.button_home:
                 finish();
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ViewListData.REQUEST_CODE && resultCode == RESULT_OK) {
+            finish();
         }
     }
 }

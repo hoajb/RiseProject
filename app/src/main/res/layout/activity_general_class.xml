@@ -9,19 +9,59 @@
     android:orientation="vertical"
     tools:context=".activity.MainClassDetailActivity">
 
-    <TextView
-        android:id="@+id/title_info"
-        android:layout_width="wrap_content"
+    <vn.com.rise.project.views.percentage.PercentLinearLayout
+        android:id="@+id/layout_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_title_2"
-        android:gravity="center"
-        android:textAppearance="@android:style/TextAppearance.Large"
-        android:textColor="@color/White"
+        android:orientation="horizontal"
         app:layout_heightPercent="10%"
-        app:layout_marginLeftPercent="5%"
-        app:layout_marginTopPercent="5%"
-        app:layout_widthPercent="20%"
-        tools:text="PreK"/>
+        app:layout_marginLeftPercent="10%"
+        app:layout_marginTopPercent="5%">
+
+        <ImageView
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_back"/>
+
+        <ImageView
+            android:id="@+id/button_home"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_home"/>
+
+        <TextView
+            android:id="@+id/title_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_title_2"
+            android:gravity="center"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textColor="@color/White"
+            android:textStyle="bold"
+            app:layout_widthPercent="20%"
+            tools:text="PreK"/>
+    </vn.com.rise.project.views.percentage.PercentLinearLayout>
+
+    <!--<TextView-->
+        <!--android:id="@+id/title_info"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@drawable/bg_title_2"-->
+        <!--android:gravity="center"-->
+        <!--android:textAppearance="@android:style/TextAppearance.Large"-->
+        <!--android:textColor="@color/White"-->
+        <!--app:layout_heightPercent="10%"-->
+        <!--app:layout_marginLeftPercent="5%"-->
+        <!--app:layout_marginTopPercent="5%"-->
+        <!--app:layout_widthPercent="20%"-->
+        <!--tools:text="PreK"/>-->
 
     <Button
         android:id="@+id/program_tree"
@@ -78,25 +118,25 @@
         app:layout_marginTopPercent="2%"
         app:layout_widthPercent="60%"/>
 
-    <android.support.percent.PercentRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/website"
-        app:layout_heightPercent="15%"
-        app:layout_marginBottomPercent="5%"
-        app:layout_marginRightPercent="5%"
-        app:layout_marginTopPercent="2%">
+    <!--<android.support.percent.PercentRelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/website"-->
+        <!--app:layout_heightPercent="15%"-->
+        <!--app:layout_marginBottomPercent="5%"-->
+        <!--app:layout_marginRightPercent="5%"-->
+        <!--app:layout_marginTopPercent="2%">-->
 
-        <ImageView
-            android:id="@+id/button_back"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:clickable="true"
-            android:contentDescription="@null"
-            android:scaleType="centerInside"
-            android:src="@drawable/icon_back"/>
-    </android.support.percent.PercentRelativeLayout>
+        <!--<ImageView-->
+            <!--android:id="@+id/button_back"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:clickable="true"-->
+            <!--android:contentDescription="@null"-->
+            <!--android:scaleType="centerInside"-->
+            <!--android:src="@drawable/icon_back"/>-->
+    <!--</android.support.percent.PercentRelativeLayout>-->
 
 
 </vn.com.rise.project.views.percentage.PercentLinearLayout>

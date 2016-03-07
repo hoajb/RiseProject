@@ -22,6 +22,7 @@ public class MainClassDetailActivity extends BaseActivity implements View.OnClic
     private Button mButtonVideo;
     private Button mButtonInfo;
     private View mButtonBack;
+    private View mButtonHome;
     private int mPosItemClick;
 
     @Override
@@ -38,11 +39,13 @@ public class MainClassDetailActivity extends BaseActivity implements View.OnClic
         mButtonVideo = (Button) findViewById(R.id.video);
         mButtonInfo = (Button) findViewById(R.id.info);
         mButtonBack = findViewById(R.id.button_back);
+        mButtonHome = findViewById(R.id.button_home);
 
         mButtonImage.setOnClickListener(this);
         mButtonVideo.setOnClickListener(this);
         mButtonInfo.setOnClickListener(this);
         mButtonBack.setOnClickListener(this);
+        mButtonHome.setOnClickListener(this);
     }
 
     private void setData() {
@@ -63,27 +66,40 @@ public class MainClassDetailActivity extends BaseActivity implements View.OnClic
     public void onClick(View v) {
         Intent intent = new Intent(MainClassDetailActivity.this, ViewListData.class);
         intent.putExtra(ViewListData.EXTRA_POS, mPosItemClick);
+
         switch (v.getId()) {
 
             case R.id.image:
                 intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_IMAGE);
-                startActivity(intent);
+                intent.putExtra(ViewListData.EXTRA_TITLE, mTextViewTitle.getText().toString() + " - " + getString(R.string.class_main_detail_image));
+                startActivityForResult(intent, ViewListData.REQUEST_CODE);
                 break;
 
             case R.id.video:
                 intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_VIDEO);
-                startActivity(intent);
+                intent.putExtra(ViewListData.EXTRA_TITLE, mTextViewTitle.getText().toString() + " - " + getString(R.string.class_main_detail_video));
+                startActivityForResult(intent, ViewListData.REQUEST_CODE);
                 break;
 
             case R.id.info:
                 intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_INFO);
-                startActivity(intent);
+                intent.putExtra(ViewListData.EXTRA_TITLE, mTextViewTitle.getText().toString() + " - " + getString(R.string.class_main_detail_info));
+                startActivityForResult(intent, ViewListData.REQUEST_CODE);
                 break;
 
             case R.id.button_back:
+            case R.id.button_home:
                 finish();
 
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ViewListData.REQUEST_CODE && resultCode == RESULT_OK) {
+            finish();
         }
     }
 }

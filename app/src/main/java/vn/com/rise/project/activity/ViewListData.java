@@ -27,9 +27,11 @@ import vn.com.rise.project.Utils.FileUtils;
 /**
  * Created by hoanguyen on 3/2/16.
  */
-public class ViewListData extends BaseActivity {
+public class ViewListData extends BaseActivity implements View.OnClickListener {
     public static final String EXTRA_TYPE_DATA = "EXTRA_TYPE_DATA";
     public static final String EXTRA_POS = "EXTRA_POS";
+    public static final String EXTRA_TITLE = "EXTRA_TITLE";
+    public static final int REQUEST_CODE = 500;
     public static final int TYPE_IMAGE = 0;
     public static final int TYPE_VIDEO = 1;
     public static final int TYPE_INFO = 2;
@@ -42,6 +44,10 @@ public class ViewListData extends BaseActivity {
     private List<String> mListPaths;
     private ListAdapter mListAdapter;
     private int mPos;
+
+    private View mButtonBack;
+    private View mButtonHome;
+    private TextView mTextViewTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,13 @@ public class ViewListData extends BaseActivity {
         mPos = intent.getIntExtra(EXTRA_POS, 0);
         mListView = (ListView) findViewById(R.id.list_view);
         mListView.setEmptyView(findViewById(R.id.empty_view));
+
+        mButtonBack = findViewById(R.id.button_back);
+        mButtonHome = findViewById(R.id.button_home);
+        mTextViewTitle = (TextView) findViewById(R.id.title_info);
+        mTextViewTitle.setText(intent.getStringExtra(EXTRA_TITLE));
+        mButtonBack.setOnClickListener(this);
+        mButtonHome.setOnClickListener(this);
         loadData();
     }
 
@@ -259,5 +272,19 @@ public class ViewListData extends BaseActivity {
     private void handleLoadedData(List<String> pResult) {
         mListPaths = pResult;
         bindingData();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.button_back:
+                finish();
+                break;
+            case R.id.button_home:
+                setResult(RESULT_OK);
+                finish();
+                break;
+        }
     }
 }
