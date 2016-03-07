@@ -62,7 +62,7 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
         setContentView(R.layout.activity_price_form);
         initView();
         setData();
-        fakeData();
+//        fakeData();
     }
 
     private void fakeData() {
@@ -202,7 +202,7 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
 
                 mTextViewTotal.setText(String.valueOf(total));
                 mTextViewTotal.setError(null);
-                Toast.makeText(PriceFromActivity.this, "Calculating...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PriceFromActivity.this, "Calculated", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.buttonSave:
@@ -307,6 +307,7 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
         mCheckBoxBackpack.setChecked(false);
         mCheckBoxShirt.setChecked(false);
         mCheckBoxVoucher.setChecked(false);
+        mEditTextName.requestFocus();
     }
 
     private boolean validateInput() {
@@ -388,7 +389,7 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
         }
         mEditTextMoneyPerHour.setError(null);
 
-        if (TextUtils.isEmpty(mTextViewTotal.getText())) {
+        if (TextUtils.isEmpty(mTextViewTotal.getText()) || mTextViewTotal.getText().toString().equals("0")) {
             mTextViewTotal.setError("");
             mTextViewTotal.requestFocus();
             return false;
