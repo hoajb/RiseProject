@@ -56,6 +56,9 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
     private EditText mEditTextOther;
     private EditText mEditTextNote;
 
+    private View mButtonBack;
+    private View mButtonHome;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +89,7 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
 
     private void initView() {
         mEditTextName = (EditText) findViewById(R.id.edtName);
+        mEditTextName.requestFocus();
         mEditTextNameFa = (EditText) findViewById(R.id.edtNameFa);
         mEditTextNameMo = (EditText) findViewById(R.id.edtNameMo);
         mEditTextPhoneFa = (EditText) findViewById(R.id.edtPhoneFa);
@@ -238,16 +242,17 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
                 } catch (NumberFormatException e) {
                     data.setDiscount(0);
                 }
-                if (mSpinnerTime.getSelectedItemPosition() >= 0) {
+
+                if (mSpinnerTime.getSelectedItemPosition() > 0) {
                     data.setDiscountTimeLabel((String) mSpinnerTime.getSelectedItem());
                 } else {
-                    data.setDiscountTimeLabel(Constants.getListDiscountTime(PriceFromActivity.this).get(0));
+                    data.setDiscountTimeLabel((String) mSpinnerTime.getItemAtPosition(1));
                 }
 
-                if (mSpinnerBro.getSelectedItemPosition() >= 0) {
+                if (mSpinnerBro.getSelectedItemPosition() > 0) {
                     data.setDiscountBroLabel((String) mSpinnerBro.getSelectedItem());
                 } else {
-                    data.setDiscountBroLabel(Constants.getListDiscountBro(PriceFromActivity.this).get(0));
+                    data.setDiscountBroLabel((String) mSpinnerBro.getItemAtPosition(1));
                 }
 
                 try {
@@ -317,12 +322,11 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
             return false;
         }
         mEditTextName.setError(null);
-
-        if (mSpinnerAge.getSelectedItemPosition() < 0) {
+        if (mSpinnerAge.getSelectedItemPosition() <= 0) {
             mTextViewErrorAge.setError("");
             mTextViewErrorAge.requestFocus();
+            return false;
         }
-
         mTextViewErrorAge.setError(null);
 
         if (TextUtils.isEmpty(mEditTextNameFa.getText())) {
