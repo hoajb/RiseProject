@@ -57,9 +57,9 @@
         android:layout_below="@id/layout_title"
         android:text="@string/class_main_detail_image"
         app:layout_heightPercent="15%"
-        app:layout_marginLeftPercent="10%"
+        app:layout_marginLeftPercent="30%"
         app:layout_marginTopPercent="10%"
-        app:layout_widthPercent="60%"/>
+        app:layout_widthPercent="40%"/>
 
     <Button
         android:id="@+id/video"
@@ -69,9 +69,9 @@
         android:layout_below="@id/image"
         android:text="@string/class_main_detail_video"
         app:layout_heightPercent="15%"
-        app:layout_marginLeftPercent="10%"
+        app:layout_marginLeftPercent="30%"
         app:layout_marginTopPercent="5%"
-        app:layout_widthPercent="60%"/>
+        app:layout_widthPercent="40%"/>
 
     <Button
         android:id="@+id/info"
@@ -81,9 +81,9 @@
         android:layout_below="@id/video"
         android:text="@string/class_main_detail_info"
         app:layout_heightPercent="15%"
-        app:layout_marginLeftPercent="10%"
+        app:layout_marginLeftPercent="30%"
         app:layout_marginTopPercent="5%"
-        app:layout_widthPercent="60%"/>
+        app:layout_widthPercent="40%"/>
 
     <!--<android.support.percent.PercentRelativeLayout-->
     <!--android:layout_width="match_parent"-->

@@ -210,7 +210,9 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
                 break;
 
             case R.id.buttonSave:
+                mButtonSave.setEnabled(false);
                 if (!validateInput()) {
+                    mButtonSave.setEnabled(true);
                     return;
                 }
 
@@ -286,7 +288,11 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
                     Toast.makeText(PriceFromActivity.this, "Saved", Toast.LENGTH_SHORT).show();
                 } else
                     Toast.makeText(PriceFromActivity.this, "Save Error", Toast.LENGTH_SHORT).show();
+
+                mButtonSave.setEnabled(true);
                 break;
+
+
         }
     }
 
