@@ -41,7 +41,7 @@ public class IOHelper {
     private static final int COLUMN_VALUE = 2;
     private static IOHelper _instance;
 
-    private static SimpleDateFormat dateFormatnew = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+    private static SimpleDateFormat sSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
     public static IOHelper instance() {
         if (_instance == null) {
@@ -360,7 +360,7 @@ public class IOHelper {
     }
 
     private String getCurrTime() {
-        return dateFormatnew.format(new Date());
+        return sSimpleDateFormat.format(new Date());
     }
 
     public static boolean isExternalStorageReadOnly() {

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import vn.com.rise.project.R;
 import vn.com.rise.project.Utils.Constants;
+import vn.com.rise.project.Utils.FileUtils;
 import vn.com.rise.project.iohelper.IOHelper;
 import vn.com.rise.project.model.InfoData;
 
@@ -21,8 +22,6 @@ import vn.com.rise.project.model.InfoData;
  * Created by hoanguyen on 3/5/16.
  */
 public class PriceFromActivity extends BaseActivity implements View.OnClickListener {
-    public static final int ERR_MISSING_NAME = 0;
-
     private EditText mEditTextName;
     private Spinner mSpinnerAge;
     private CheckBox mCheckBoxEngYes;
@@ -130,6 +129,16 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
 
         mCheckBoxEngYes.setOnCheckedChangeListener(mCheckedChangeListener);
         mCheckBoxEngNo.setOnCheckedChangeListener(mCheckedChangeListener);
+
+        //----
+        String pricePerHour = FileUtils.readFromFile_FixedInfo(this).trim();
+        if (TextUtils.isEmpty(pricePerHour)) {
+            mEditTextMoneyPerHour.setText(getString(R.string.unknown));
+        } else {
+            mEditTextMoneyPerHour.setText(pricePerHour);
+        }
+
+        mEditTextMoneyPerHour.setEnabled(false);
     }
 
     private void setData() {

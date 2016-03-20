@@ -9,10 +9,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
@@ -24,7 +23,7 @@ public class FileUtils {
     private static final String TAG = "ImageGalleryFragment";
     public static final String SD_ROOT_PATH = "/RISEVietnam";
     public static final String SD_OUTPUT_PATH = "/InfoOutput";
-    public static final String FILE_NAME_SAVE = "Rise_Info";
+    public static final String FILE_PRICE_PER_SIZE = "RiseFixedInfo";
     public static final String LINK_WEB_ABOUT = "http://rise.com.vn/vn/gioi-thieu";
 
     public static class AudioFilter implements FilenameFilter {
@@ -124,16 +123,28 @@ public class FileUtils {
         return listPaths;
     }
 
-    public static void writeToFile(Context context, String data) {
-        writeToFile(context, FILE_NAME_SAVE, data);
+    /**
+     * not use for now
+     *
+     * @param context
+     * @param data
+     */
+    public static void writeToFile_FixedInfo(Context context, String data) {
+        writeToFile(context, Environment.getExternalStorageDirectory().getPath() + FileUtils.SD_ROOT_PATH + "/" +
+                FILE_PRICE_PER_SIZE, data);
     }
 
     public static void writeToFile(Context context, String fileName, String data) {
         try {
             String rootPath = Environment.getExternalStorageDirectory().getPath() + FileUtils.SD_ROOT_PATH;
             File myFile = new File(rootPath + "/" + fileName + ".txt");
-            if (!myFile.exists())
-                myFile.createNewFile();
+            if (!myFile.exists()) {
+                boolean newFile = myFile.createNewFile();
+                if (!newFile) {
+                    Log.e("Exception", "File write failed: cannot createFile");
+                    return;
+                }
+            }
             FileOutputStream fOut = new FileOutputStream(myFile, true);
             OutputStreamWriter myOutWriter =
                     new OutputStreamWriter(fOut);
@@ -146,21 +157,21 @@ public class FileUtils {
         }
     }
 
-    private String readFromFile(Context pContext) {
-
-        return readFromFile(pContext, FILE_NAME_SAVE);
+    public static String readFromFile_FixedInfo(Context pContext) {
+        return readFromFile(pContext, Environment.getExternalStorageDirectory().getPath() + FileUtils.SD_ROOT_PATH + "/" +
+                FILE_PRICE_PER_SIZE);
     }
 
-    private String readFromFile(Context pContext, String nameFile) {
+    public static String readFromFile(Context pContext, String nameFile) {
 
         String ret = "";
 
         try {
-            InputStream inputStream = pContext.openFileInput(nameFile + ".txt");
-
-            if (inputStream != null) {
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String fullFilePath = nameFile + ".txt";
+            File readFile = new File(fullFilePath);
+            if (readFile.exists()) {
+                FileReader fileReader = new FileReader(readFile);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
                 String receiveString = "";
                 StringBuilder stringBuilder = new StringBuilder();
 
@@ -168,9 +179,9 @@ public class FileUtils {
                     stringBuilder.append(receiveString);
                 }
 
-                inputStream.close();
                 ret = stringBuilder.toString();
             }
+
         } catch (FileNotFoundException e) {
             Log.e("login activity", "File not found: " + e.toString());
         } catch (IOException e) {

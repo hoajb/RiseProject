@@ -55,6 +55,7 @@
     <string name="discount_other">Other</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="unknown">Unknown</string>
 
     <!--Margin-->
     <!--<string name="button_margin_left">10%</string>-->
