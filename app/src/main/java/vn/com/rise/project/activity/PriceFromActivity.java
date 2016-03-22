@@ -64,7 +64,7 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
         setContentView(R.layout.activity_price_form);
         initView();
         setData();
-//        fakeData();
+        fakeData();
     }
 
     private void fakeData() {
@@ -78,7 +78,7 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
         mEditTextAddress.setText("Big C To Hien Thanh Quan 10 HCM");
         mEditTextHour.setText("150");
         mEditTextMoneyPerHour.setText("150000");
-        mEditTextDiscount.setText("3000000");
+//        mEditTextDiscount.setText("3000000");
         mEditTextOther.setText("Pen");
         mEditTextNote.setText("Nothing More");
         mCheckBoxBackpack.setChecked(true);

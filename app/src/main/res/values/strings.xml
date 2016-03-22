@@ -24,6 +24,7 @@
     <string name="hint_discount1">Discount1</string>
     <string name="hint_discount1_value">Discount1 - value</string>
     <string name="hint_discount2">Discount2</string>
+    <string name="hint_discount3">Discount3</string>
     <string name="hint_discount2_value">Discount2 - value</string>
     <string name="hint_total">Total</string>
     <string name="hint_calculate">Calculate</string>
@@ -56,6 +57,7 @@
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="unknown">Unknown</string>
+    <string name="number">No.</string>
 
     <!--Margin-->
     <!--<string name="button_margin_left">10%</string>-->

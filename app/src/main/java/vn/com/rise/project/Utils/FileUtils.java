@@ -24,6 +24,7 @@ public class FileUtils {
     public static final String SD_ROOT_PATH = "/RISEVietnam";
     public static final String SD_OUTPUT_PATH = "/InfoOutput";
     public static final String FILE_PRICE_PER_SIZE = "RiseFixedInfo";
+    public static final String FILE_INFO_SAVED = "RiseInfo";
     public static final String LINK_WEB_ABOUT = "http://rise.com.vn/vn/gioi-thieu";
 
     public static class AudioFilter implements FilenameFilter {

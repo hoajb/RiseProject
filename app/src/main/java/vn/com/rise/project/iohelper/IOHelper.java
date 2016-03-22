@@ -13,8 +13,6 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -58,201 +56,200 @@ public class IOHelper {
             return false;
         }
 
-        boolean success = false;
+        String pathRise = Environment.getExternalStorageDirectory().getPath() + FileUtils.SD_ROOT_PATH + FileUtils.SD_OUTPUT_PATH;
+        File folderOutput = new File(pathRise);
+        if (!folderOutput.exists()) {
+            boolean mkdir = folderOutput.mkdir();
+            if (!mkdir) {
+                Log.e(TAG, "Storage not available or read only");
+                return false;
+            }
+        }
 
-        //New Workbook
-        Workbook wb = new HSSFWorkbook();
+        File fileOutput = new File(pathRise + "/" + FileUtils.FILE_INFO_SAVED + ".xls");
+
+        FileInputStream lFin = null;
+        HSSFWorkbook wb = null;
+        HSSFSheet sheetInfo = null;
+        FileOutputStream lFout = null;
+        POIFSFileSystem lPOIfs = null;
+        boolean isAppend = false;
+
+        if (fileOutput.exists()) {
+            try {
+                lFout = new FileOutputStream(fileOutput, true);
+                lFin = new FileInputStream(fileOutput);
+//                lPOIfs = new POIFSFileSystem(lFin);
+//                wb = new HSSFWorkbook(lPOIfs);
+                wb = new HSSFWorkbook(lFin);
+                lFout.close();
+                sheetInfo = wb.getSheet(SHEET_NAME);
+                isAppend = true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+        } else {
+            //New Workbook
+            wb = new HSSFWorkbook();
+            //New Sheet
+            sheetInfo = wb.createSheet(SHEET_NAME);
+        }
+
+        boolean success = false;
 
         //Cell style for header row
 //        CellStyle cs = wb.createCellStyle();
 //        cs.setFillForegroundColor(HSSFColor.LIME.index);
 //        cs.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
 
-        //New Sheet
-        Sheet sheetInfo = wb.createSheet(SHEET_NAME);
 
         int jump = 0;
         Row row;
         Cell c;
         Resources res = context.getResources();
 
+        if (!isAppend) {
+            row = sheetInfo.createRow(0);
+            c = row.createCell(jump);
+            c.setCellValue(res.getString(R.string.number));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_name));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_age));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.english));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_nameFa));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_phoneFa));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_emailFa));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_nameMo));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_phoneMo));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_emailMo));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_address));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_hour));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_discount1));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_discount2));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_discount3));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_total));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.gift));
+
+            c = row.createCell(++jump);
+            c.setCellValue(res.getString(R.string.hint_note));
+
+            sheetInfo.setColumnWidth(0, (5 * 500));
+            for (int i = 1; i < jump; i++) {
+                sheetInfo.setColumnWidth(i, (15 * 500));
+            }
+        }
+
+        jump = 0;
+//        int count = -1;
+//        for (Row rowInfo : sheetInfo) {
+//            count++;
+//            if (rowInfo.getCell(0).getStringCellValue().isEmpty()) {
+//                break;
+//            }
+//        }
+        //**** No. *****
+        int num = sheetInfo.getLastRowNum() + 1;
+        row = sheetInfo.getRow(num);
+        if (row == null)
+            row = sheetInfo.createRow(num);
+
+        c = row.createCell(jump);
+        c.setCellValue(String.valueOf(num));
+
         //**** Name *****
-        row = sheetInfo.createRow(jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_name));
-        c = row.createCell(COLUMN_VALUE);
+        c = row.createCell(++jump);
         c.setCellValue(data.getName());
 
         //**** Age *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_age));
-        c = row.createCell(COLUMN_VALUE);
+        c = row.createCell(++jump);
         c.setCellValue(data.getAge());
 
         //**** Study English *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.english));
-        c = row.createCell(COLUMN_VALUE);
-        c.setCellValue(data.isStudyEng() ? "Yes" : "No");
+        c = row.createCell(++jump);
+        c.setCellValue(data.isStudyEng() ? res.getString(R.string.yes) : res.getString(R.string.no));
 
         //**** Father's Name *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_nameFa));
-        c = row.createCell(COLUMN_VALUE);
+        c = row.createCell(++jump);
         c.setCellValue(data.getNameFa());
 
         //**** Father's Phone *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_phoneFa));
-        c = row.createCell(COLUMN_VALUE);
+        c = row.createCell(++jump);
         c.setCellValue(data.getPhoneFa());
 
         //**** Father's Email *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_emailFa));
-        c = row.createCell(COLUMN_VALUE);
+        c = row.createCell(++jump);
         c.setCellValue(data.getEmailFa());
 
-        //**** Mother's Email *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_nameMo));
-        c = row.createCell(COLUMN_VALUE);
+        //**** Mother's Name *****
+        c = row.createCell(++jump);
         c.setCellValue(data.getNameMo());
 
         //**** Mother's Phone *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_phoneMo));
-        c = row.createCell(COLUMN_VALUE);
+        c = row.createCell(++jump);
         c.setCellValue(data.getPhoneMo());
 
         //**** Mother's Email *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_emailMo));
-        c = row.createCell(COLUMN_VALUE);
+        c = row.createCell(++jump);
         c.setCellValue(data.getEmailMo());
 
         //**** Address *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_address));
-        c = row.createCell(COLUMN_VALUE);
+        c = row.createCell(++jump);
         c.setCellValue(data.getAddress());
 
         //**** Hour *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_hour));
-        c = row.createCell(COLUMN_VALUE);
+        c = row.createCell(++jump);
         c.setCellValue(data.getHour());
 
-        //**** Money/Hour *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_money_hour));
-        c = row.createCell(COLUMN_VALUE);
-        c.setCellValue(data.getMoneyPerHour());
-
-        //**** Discount *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_discount));
-        c = row.createCell(COLUMN_VALUE);
+        //**** Discount 1 *****
+        c = row.createCell(++jump);
         c.setCellValue(data.getDiscount());
 
-        //**** Discount Time Label*****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_discount1));
-        c = row.createCell(COLUMN_VALUE);
-        String value2 = data.getDiscountTimeLabel();
-        if (value2.toLowerCase().equals(R.string.hint_discount)) {
-            value2 = res.getString(R.string.discount_none);
-        }
-        c.setCellValue(value2);
-
-        //**** Discount Time Value*****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_discount1_value));
-        c = row.createCell(COLUMN_VALUE);
+        //**** Discount 2 *****
+        c = row.createCell(++jump);
         c.setCellValue(data.getDiscountTime());
 
-        //**** Discount Bro Label*****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_discount2));
-        c = row.createCell(COLUMN_VALUE);
-        String value22 = data.getDiscountBroLabel();
-        if (value22.toLowerCase().equals(R.string.hint_discount)) {
-            value22 = res.getString(R.string.discount_none);
-        }
-        c.setCellValue(value22);
-
-        //**** Discount Bro Value*****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_discount2_value));
-        c = row.createCell(COLUMN_VALUE);
+        //**** Discount 3 *****
+        c = row.createCell(++jump);
         c.setCellValue(data.getDiscountBro());
 
         //**** Total *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_total));
-        c = row.createCell(COLUMN_VALUE);
+        c = row.createCell(++jump);
         c.setCellValue(data.getTotal());
 
         //**** Gift *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.gift));
-        c = row.createCell(COLUMN_VALUE);
+        c = row.createCell(++jump);
         String value = "";
         if (data.isGiftBackpack())
             value += res.getString(R.string.backpack);
@@ -277,45 +274,28 @@ public class IOHelper {
         c.setCellValue(value);
 
         //**** Note *****
-        row = sheetInfo.createRow(++jump);
-        c = row.createCell(COLUMN_NUMBER);
-        c.setCellValue(jump + 1);
-        c = row.createCell(COLUMN_TITLE);
-        c.setCellValue(res.getString(R.string.hint_note));
-        c = row.createCell(COLUMN_VALUE);
+        c = row.createCell(++jump);
         c.setCellValue(data.getNote());
 
-        sheetInfo.setColumnWidth(COLUMN_NUMBER, (5 * 500));
-        sheetInfo.setColumnWidth(COLUMN_TITLE, (15 * 500));
-        sheetInfo.setColumnWidth(COLUMN_VALUE, (15 * 500));
-
-        String pathRise = Environment.getExternalStorageDirectory().getPath() + FileUtils.SD_ROOT_PATH + FileUtils.SD_OUTPUT_PATH;
-        File folderOutput = new File(pathRise);
-        if (!folderOutput.exists()) {
-            boolean mkdir = folderOutput.mkdir();
-            if (!mkdir) {
-                Log.e(TAG, "Storage not available or read only");
-                return false;
-            }
-        }
-
-        File fileOutut = new File(pathRise + "/" + getCurrTime() + "_" + data.getName() + ".xls");
-        FileOutputStream os = null;
-
         try {
-            os = new FileOutputStream(fileOutut);
-            wb.write(os);
-            Log.w("FileUtils", "Writing file" + fileOutut);
+            lFout = new FileOutputStream(fileOutput);
+            wb.write(lFout);
+            lFout.flush();
+
+            Log.w("FileUtils", "Writing file" + fileOutput);
             success = true;
         } catch (IOException e) {
-            Log.w("FileUtils", "Error writing " + fileOutut, e);
+            Log.w("FileUtils", "Error writing " + fileOutput, e);
         } catch (Exception e) {
             Log.w("FileUtils", "Failed to save file", e);
         } finally {
             try {
-                if (null != os)
-                    os.close();
+                if (null != lFout)
+                    lFout.close();
+                if (null != lFin)
+                    lFin.close();
             } catch (Exception ex) {
+                //nothing
             }
         }
         return success;
@@ -370,4 +350,219 @@ public class IOHelper {
     public static boolean isExternalStorageAvailable() {
         return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
     }
+
+
+    /////
+
+/*
+    ///-------------
+    //**** Name *****
+    row = sheetInfo.createRow(jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_name));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getName());
+
+    //**** Age *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_age));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getAge());
+
+    //**** Study English *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.english));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.isStudyEng() ? "Yes" : "No");
+
+    //**** Father's Name *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_nameFa));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getNameFa());
+
+    //**** Father's Phone *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_phoneFa));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getPhoneFa());
+
+    //**** Father's Email *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_emailFa));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getEmailFa());
+
+    //**** Mother's Email *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_nameMo));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getNameMo());
+
+    //**** Mother's Phone *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_phoneMo));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getPhoneMo());
+
+    //**** Mother's Email *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_emailMo));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getEmailMo());
+
+    //**** Address *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_address));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getAddress());
+
+    //**** Hour *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_hour));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getHour());
+
+    //**** Money/Hour *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_money_hour));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getMoneyPerHour());
+
+    //**** Discount *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_discount));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getDiscount());
+
+    //**** Discount Time Label*****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_discount1));
+    c = row.createCell(COLUMN_VALUE);
+    String value2 = data.getDiscountTimeLabel();
+    if (value2.toLowerCase().equals(R.string.hint_discount)) {
+        value2 = res.getString(R.string.discount_none);
+    }
+    c.setCellValue(value2);
+
+    //**** Discount Time Value*****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_discount1_value));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getDiscountTime());
+
+    //**** Discount Bro Label*****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_discount2));
+    c = row.createCell(COLUMN_VALUE);
+    String value22 = data.getDiscountBroLabel();
+    if (value22.toLowerCase().equals(R.string.hint_discount)) {
+        value22 = res.getString(R.string.discount_none);
+    }
+    c.setCellValue(value22);
+
+    //**** Discount Bro Value*****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_discount2_value));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getDiscountBro());
+
+    //**** Total *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_total));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getTotal());
+
+    //**** Gift *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.gift));
+    c = row.createCell(COLUMN_VALUE);
+    String value = "";
+    if (data.isGiftBackpack())
+    value += res.getString(R.string.backpack);
+
+    if (data.isGiftShirt()) {
+        if (value.length() > 0)
+            value += ",";
+        value += res.getString(R.string.shirt);
+    }
+
+    if (data.isGiftVoucher()) {
+        if (value.length() > 0)
+            value += ",";
+        value += res.getString(R.string.voucher);
+    }
+
+    if (data.getOther().length() > 0) {
+        if (value.length() > 0)
+            value += ",";
+        value += data.getOther();
+    }
+    c.setCellValue(value);
+
+    //**** Note *****
+    row = sheetInfo.createRow(++jump);
+    c = row.createCell(COLUMN_NUMBER);
+    c.setCellValue(jump + 1);
+    c = row.createCell(COLUMN_TITLE);
+    c.setCellValue(res.getString(R.string.hint_note));
+    c = row.createCell(COLUMN_VALUE);
+    c.setCellValue(data.getNote());
+    */
 }
