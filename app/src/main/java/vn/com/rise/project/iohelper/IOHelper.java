@@ -186,7 +186,7 @@ public class IOHelper {
             row = sheetInfo.createRow(num);
 
         c = row.createCell(jump);
-        c.setCellValue(String.valueOf(num));
+        c.setCellValue(num);
 
         //**** Name *****
         c = row.createCell(++jump);
