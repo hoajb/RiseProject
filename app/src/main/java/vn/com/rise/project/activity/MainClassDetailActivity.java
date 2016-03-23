@@ -64,24 +64,36 @@ public class MainClassDetailActivity extends BaseActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(MainClassDetailActivity.this, ViewListData.class);
-        intent.putExtra(ViewListData.EXTRA_POS, mPosItemClick);
+        Intent intent;
 
         switch (v.getId()) {
 
             case R.id.image:
-                intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_IMAGE);
-                intent.putExtra(ViewListData.EXTRA_TITLE, mTextViewTitle.getText().toString() + " - " + getString(R.string.class_main_detail_image));
+//                intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_IMAGE);
+//                intent.putExtra(ViewListData.EXTRA_TITLE, mTextViewTitle.getText().toString() + " - " + getString(R.string.class_main_detail_image));
+//                startActivityForResult(intent, ViewListData.REQUEST_CODE);
+
+                intent = new Intent(MainClassDetailActivity.this, ImageGalleryViewActivity.class);
+                intent.putExtra(ViewListData.EXTRA_POS, mPosItemClick);
+
+//                intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_IMAGE);
+//                intent.putExtra(ViewListData.EXTRA_TITLE, mTextViewTitle.getText().toString() + " - " + getString(R.string.class_main_detail_image));
                 startActivityForResult(intent, ViewListData.REQUEST_CODE);
+
+
                 break;
 
             case R.id.video:
+                intent = new Intent(MainClassDetailActivity.this, ViewListData.class);
+                intent.putExtra(ViewListData.EXTRA_POS, mPosItemClick);
                 intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_VIDEO);
                 intent.putExtra(ViewListData.EXTRA_TITLE, mTextViewTitle.getText().toString() + " - " + getString(R.string.class_main_detail_video));
                 startActivityForResult(intent, ViewListData.REQUEST_CODE);
                 break;
 
             case R.id.info:
+                intent = new Intent(MainClassDetailActivity.this, ViewListData.class);
+                intent.putExtra(ViewListData.EXTRA_POS, mPosItemClick);
                 intent.putExtra(ViewListData.EXTRA_TYPE_DATA, ViewListData.TYPE_INFO);
                 intent.putExtra(ViewListData.EXTRA_TITLE, mTextViewTitle.getText().toString() + " - " + getString(R.string.class_main_detail_info));
                 startActivityForResult(intent, ViewListData.REQUEST_CODE);

@@ -1,16 +1,16 @@
 package vn.com.rise.project.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
+import android.support.v4.app.FragmentActivity;
 
 /**
  * Created by hoanguyen on 3/1/16.
  */
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends FragmentActivity {
     private ProgressDialog mProgressDialog;
 
 
-    protected void showProgressDialog() {
+    public void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
         }
@@ -22,7 +22,7 @@ public abstract class BaseActivity extends Activity {
         }
     }
 
-    protected void showProgressDialog(String msg) {
+    public void showProgressDialog(String msg) {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
         }
@@ -34,7 +34,7 @@ public abstract class BaseActivity extends Activity {
         }
     }
 
-    protected void dismissProgressDialog() {
+    public void dismissProgressDialog() {
         if (mProgressDialog == null) {
             return;
         }

@@ -3,9 +3,7 @@ package vn.com.rise.project.activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.util.List;
 
 import vn.com.rise.project.R;
-import vn.com.rise.project.Utils.Constants;
 import vn.com.rise.project.Utils.FileUtils;
+import vn.com.rise.project.Utils.LoadingDataAsyncTask;
 
 /**
  * Created by hoanguyen on 3/2/16.
@@ -75,7 +72,13 @@ public class ViewListData extends BaseActivity implements View.OnClickListener {
     }
 
     private void loadData() {
-        new LoadingDataAsyncTask().execute();
+//        new LoadingDataAsyncTask().execute();
+        new LoadingDataAsyncTask(this, mTypeData, mPos, new LoadingDataAsyncTask.PostExecuteListener() {
+            @Override
+            public void onPostExecuteListener(List<String> result) {
+                handleLoadedData(result);
+            }
+        }).execute();
     }
 
     private void bindingData() {
@@ -204,70 +207,70 @@ public class ViewListData extends BaseActivity implements View.OnClickListener {
         }
     }
 
-    private class LoadingDataAsyncTask extends AsyncTask<Void, Void, List<String>> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            showProgressDialog();
-        }
-
-        @Override
-        protected List<String> doInBackground(Void... params) {
-            String pathView = Environment.getExternalStorageDirectory().getPath() + FileUtils.SD_ROOT_PATH;
-
-            FilenameFilter filter = null;
-
-            if (mTypeData >= 0) {
-                //Main detail
-                String nameClass = Constants.getMapsValueClass().get(mPos);
-
-                switch (mTypeData) {
-                    case TYPE_IMAGE:
-                        pathView += "/" + nameClass + "/Hinh anh";
-                        filter = new FileUtils.ImageFilter();
-                        break;
-
-                    case TYPE_VIDEO:
-                        pathView += "/" + nameClass + "/Video";
-                        filter = new FileUtils.VideoFilter();
-                        break;
-
-                    case TYPE_INFO:
-                        pathView += "/" + nameClass + "/Thong tin chi tiet";
-                        filter = new FileUtils.DocumentFilter();
-                        break;
-                }
-            } else {
-                //General
-                String nameClass = "Tong Quat";
-
-                switch (mTypeData) {
-                    case TYPE_PRICE:
-                        pathView += "/" + nameClass + "/Bieu Phi";
-                        break;
-
-                    case TYPE_PROGRAM_TREE:
-                        pathView += "/" + nameClass + "/Cay chuong trinh";
-                        break;
-
-                    case TYPE_SCHEDULE:
-                        pathView += "/" + nameClass + "/Lich hoc";
-                        break;
-                }
-
-                filter = new FileUtils.DocumentFilter();
-            }
-
-            return FileUtils.getImagePaths(pathView, filter);
-        }
-
-        @Override
-        protected void onPostExecute(List<String> result) {
-            super.onPostExecute(result);
-            handleLoadedData(result);
-            dismissProgressDialog();
-        }
-    }
+//    private  class LoadingDataAsyncTask extends AsyncTask<Void, Void, List<String>> {
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//            showProgressDialog();
+//        }
+//
+//        @Override
+//        protected List<String> doInBackground(Void... params) {
+//            String pathView = Environment.getExternalStorageDirectory().getPath() + FileUtils.SD_ROOT_PATH;
+//
+//            FilenameFilter filter = null;
+//
+//            if (mTypeData >= 0) {
+//                //Main detail
+//                String nameClass = Constants.getMapsValueClass().get(mPos);
+//
+//                switch (mTypeData) {
+//                    case TYPE_IMAGE:
+//                        pathView += "/" + nameClass + "/Hinh anh";
+//                        filter = new FileUtils.ImageFilter();
+//                        break;
+//
+//                    case TYPE_VIDEO:
+//                        pathView += "/" + nameClass + "/Video";
+//                        filter = new FileUtils.VideoFilter();
+//                        break;
+//
+//                    case TYPE_INFO:
+//                        pathView += "/" + nameClass + "/Thong tin chi tiet";
+//                        filter = new FileUtils.DocumentFilter();
+//                        break;
+//                }
+//            } else {
+//                //General
+//                String nameClass = "Tong Quat";
+//
+//                switch (mTypeData) {
+//                    case TYPE_PRICE:
+//                        pathView += "/" + nameClass + "/Bieu Phi";
+//                        break;
+//
+//                    case TYPE_PROGRAM_TREE:
+//                        pathView += "/" + nameClass + "/Cay chuong trinh";
+//                        break;
+//
+//                    case TYPE_SCHEDULE:
+//                        pathView += "/" + nameClass + "/Lich hoc";
+//                        break;
+//                }
+//
+//                filter = new FileUtils.DocumentFilter();
+//            }
+//
+//            return FileUtils.getImagePaths(pathView, filter);
+//        }
+//
+//        @Override
+//        protected void onPostExecute(List<String> result) {
+//            super.onPostExecute(result);
+//            handleLoadedData(result);
+//            dismissProgressDialog();
+//        }
+//    }
 
     private void handleLoadedData(List<String> pResult) {
         mListPaths = pResult;
