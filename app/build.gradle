@@ -37,6 +37,5 @@ dependencies {
         transitive = true
     }
     compile files('libs/poi-3.7.jar')
-    compile 'com.veinhorn.scrollgalleryview:library:1.0.5'
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }
