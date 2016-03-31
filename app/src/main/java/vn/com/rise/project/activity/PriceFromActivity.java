@@ -64,7 +64,7 @@ public class PriceFromActivity extends BaseActivity implements View.OnClickListe
         setContentView(R.layout.activity_price_form);
         initView();
         setData();
-        fakeData();
+//        fakeData();
     }
 
     private void fakeData() {
