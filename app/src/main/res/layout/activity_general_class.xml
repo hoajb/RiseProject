@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_heightPercent="10%"
-        app:layout_marginLeftPercent="10%"
+        app:layout_marginLeftPercent="18%"
         app:layout_marginTopPercent="5%">
 
         <ImageView
@@ -42,10 +42,11 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_title_2"
             android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:textAppearance="@android:style/TextAppearance.Large"
             android:textColor="@color/White"
             android:textStyle="bold"
-            app:layout_widthPercent="20%"
             tools:text="PreK"/>
     </vn.com.rise.project.views.percentage.PercentLinearLayout>
 
