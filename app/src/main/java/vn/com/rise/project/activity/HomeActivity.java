@@ -20,6 +20,7 @@ public class HomeActivity extends BaseActivity {
             R.drawable.icon4,
             R.drawable.icon5,
             R.drawable.icon6,
+            R.drawable.icon7,
     };
 
     @Override
