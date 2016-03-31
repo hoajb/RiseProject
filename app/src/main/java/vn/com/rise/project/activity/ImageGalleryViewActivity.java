@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -32,6 +33,7 @@ import vn.com.rise.project.Utils.LoadingDataAsyncTask;
 public class ImageGalleryViewActivity extends BaseActivity {
 
     private ViewPager mViewPager;
+    private TextView mTextEmpty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +53,12 @@ public class ImageGalleryViewActivity extends BaseActivity {
         new LoadingDataAsyncTask(this, ViewListData.TYPE_IMAGE, mPos, new LoadingDataAsyncTask.PostExecuteListener() {
             @Override
             public void onPostExecuteListener(List<String> result) {
+                if (result != null && result.isEmpty()) {
+                    mTextEmpty.setVisibility(View.VISIBLE);
+                } else {
+                    mTextEmpty.setVisibility(View.GONE);
+                }
                 mViewPager.setAdapter(new ImageAdapter(ImageGalleryViewActivity.this, result));
-
             }
         }).execute();
     }
@@ -60,6 +66,7 @@ public class ImageGalleryViewActivity extends BaseActivity {
     private void initView() {
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setOffscreenPageLimit(3);
+        mTextEmpty = (TextView) findViewById(R.id.empty_view);
     }
 
     private static class ImageAdapter extends PagerAdapter {
