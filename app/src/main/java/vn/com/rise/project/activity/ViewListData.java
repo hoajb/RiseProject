@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,7 +73,6 @@ public class ViewListData extends BaseActivity implements View.OnClickListener {
     }
 
     private void loadData() {
-//        new LoadingDataAsyncTask().execute();
         new LoadingDataAsyncTask(this, mTypeData, mPos, new LoadingDataAsyncTask.PostExecuteListener() {
             @Override
             public void onPostExecuteListener(List<String> result) {
@@ -177,25 +177,25 @@ public class ViewListData extends BaseActivity implements View.OnClickListener {
             //----
             switch (mTypeData) {
                 case TYPE_IMAGE:
-                    viewHolder.imageView.setImageResource(R.drawable.icon_image2);
+                    viewHolder.imageView.setImageResource(R.drawable.icon18);
                     break;
                 case TYPE_VIDEO:
-                    viewHolder.imageView.setImageResource(R.drawable.icon_video);
+                    viewHolder.imageView.setImageResource(R.drawable.icon17);
                     break;
                 case TYPE_INFO:
                 case TYPE_PRICE:
                 case TYPE_PROGRAM_TREE:
                 case TYPE_SCHEDULE:
-                    viewHolder.imageView.setImageResource(R.drawable.icon_document);
+                    viewHolder.imageView.setImageResource(R.drawable.icon16);
                     break;
             }
 
             viewHolder.textView.setText(FileUtils.getFileNameFromPath(mListPaths.get(position)));
 
             if (position % 2 == 0) {
-                convertView.setBackgroundColor(getResources().getColor(R.color.DarkGray));
+                convertView.setBackgroundColor(ContextCompat.getColor(ViewListData.this, R.color.item1_50));
             } else {
-                convertView.setBackgroundColor(getResources().getColor(R.color.LightSlateGray));
+                convertView.setBackgroundColor(ContextCompat.getColor(ViewListData.this, R.color.item2_50));
             }
 
             return convertView;
@@ -206,71 +206,6 @@ public class ViewListData extends BaseActivity implements View.OnClickListener {
             ImageView imageView;
         }
     }
-
-//    private  class LoadingDataAsyncTask extends AsyncTask<Void, Void, List<String>> {
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//            showProgressDialog();
-//        }
-//
-//        @Override
-//        protected List<String> doInBackground(Void... params) {
-//            String pathView = Environment.getExternalStorageDirectory().getPath() + FileUtils.SD_ROOT_PATH;
-//
-//            FilenameFilter filter = null;
-//
-//            if (mTypeData >= 0) {
-//                //Main detail
-//                String nameClass = Constants.getMapsValueClass().get(mPos);
-//
-//                switch (mTypeData) {
-//                    case TYPE_IMAGE:
-//                        pathView += "/" + nameClass + "/Hinh anh";
-//                        filter = new FileUtils.ImageFilter();
-//                        break;
-//
-//                    case TYPE_VIDEO:
-//                        pathView += "/" + nameClass + "/Video";
-//                        filter = new FileUtils.VideoFilter();
-//                        break;
-//
-//                    case TYPE_INFO:
-//                        pathView += "/" + nameClass + "/Thong tin chi tiet";
-//                        filter = new FileUtils.DocumentFilter();
-//                        break;
-//                }
-//            } else {
-//                //General
-//                String nameClass = "Tong Quat";
-//
-//                switch (mTypeData) {
-//                    case TYPE_PRICE:
-//                        pathView += "/" + nameClass + "/Bieu Phi";
-//                        break;
-//
-//                    case TYPE_PROGRAM_TREE:
-//                        pathView += "/" + nameClass + "/Cay chuong trinh";
-//                        break;
-//
-//                    case TYPE_SCHEDULE:
-//                        pathView += "/" + nameClass + "/Lich hoc";
-//                        break;
-//                }
-//
-//                filter = new FileUtils.DocumentFilter();
-//            }
-//
-//            return FileUtils.getImagePaths(pathView, filter);
-//        }
-//
-//        @Override
-//        protected void onPostExecute(List<String> result) {
-//            super.onPostExecute(result);
-//            handleLoadedData(result);
-//            dismissProgressDialog();
-//        }
-//    }
 
     private void handleLoadedData(List<String> pResult) {
         mListPaths = pResult;
