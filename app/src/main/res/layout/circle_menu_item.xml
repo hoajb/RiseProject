@@ -19,7 +19,20 @@
         app:layout_widthPercent="60%"/>
 
 
-    <vn.com.rise.project.views.AutoResizeTextView
+    <!--<vn.com.rise.project.views.AutoResizeTextView-->
+    <!--android:id="@id/id_circle_menu_item_text"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/id_circle_menu_item_image"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:gravity="center"-->
+    <!--android:textColor="@color/Black_Title"-->
+    <!--android:textStyle="bold"-->
+    <!--android:visibility="gone"-->
+    <!--app:layout_heightPercent="20%"/>-->
+
+    <TextView
         android:id="@id/id_circle_menu_item_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,6 +41,8 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:textColor="@color/Black_Title"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:visibility="gone"
         app:layout_heightPercent="20%"/>
 
