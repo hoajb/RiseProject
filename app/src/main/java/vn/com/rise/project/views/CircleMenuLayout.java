@@ -34,7 +34,8 @@ public class CircleMenuLayout extends ViewGroup {
     /**
      * 该容器的内边距,无视padding属性，如需边距请用该变量
      */
-    private static final float RADIO_PADDING_LAYOUT = 1 / 12f;
+//    private static final float RADIO_PADDING_LAYOUT = 1 / 12f;
+    private static final float RADIO_PADDING_LAYOUT = 1 / 24f;
 
     /**
      * 当每秒移动角度达到该值时，认为是快速移动
@@ -86,7 +87,7 @@ public class CircleMenuLayout extends ViewGroup {
      */
     private boolean isFling;
 
-    private int mMenuItemLayoutId = R.layout.circle_menu_item;
+    private int mMenuItemLayoutId = R.layout.circle_menu_item_v2;
 
     public CircleMenuLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
