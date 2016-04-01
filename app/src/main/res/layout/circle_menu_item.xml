@@ -27,7 +27,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/Black_Title"
         android:visibility="gone"
         app:layout_heightPercent="20%"/>
 

@@ -40,11 +40,11 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_title_2"
             android:gravity="center"
-            android:textAppearance="@android:style/TextAppearance.Large"
-            android:textColor="@color/White"
-            android:textStyle="bold"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textColor="@color/Black_Title"
+            android:textStyle="bold"
             tools:text="PreK"/>
     </vn.com.rise.project.views.percentage.PercentLinearLayout>
 
@@ -53,6 +53,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/layout_title"
+        android:layout_marginTop="10dp"
+        android:divider="@null"
         app:layout_marginLeftPercent="20%"
         app:layout_marginRightPercent="20%"/>
 

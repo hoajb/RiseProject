@@ -45,7 +45,7 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:textAppearance="@android:style/TextAppearance.Large"
-            android:textColor="@color/White"
+            android:textColor="@color/Black_Title"
             android:textStyle="bold"
             tools:text="PreK"/>
     </vn.com.rise.project.views.percentage.PercentLinearLayout>
@@ -64,15 +64,48 @@
     <!--app:layout_widthPercent="20%"-->
     <!--tools:text="PreK"/>-->
 
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@drawable/state_button_no_conner"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:padding="3dp"-->
+    <!--app:layout_heightPercent="10%"-->
+    <!--app:layout_marginLeftPercent="30%"-->
+    <!--app:layout_marginTopPercent="5%"-->
+    <!--app:layout_widthPercent="40%">-->
+
+    <!--<net.soulwolf.widget.ratiolayout.widget.RatioImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:contentDescription="@null"-->
+    <!--android:scaleType="centerInside"-->
+    <!--android:src="@drawable/ic_vuong15"-->
+    <!--app:datumRatio="datumHeight"-->
+    <!--app:heightRatio="1.0"-->
+    <!--app:widthRatio="1.0"/>-->
+
+    <!--<Button-->
+    <!--android:id="@+id/program_tree"-->
+    <!--style="@style/ButtonStyleNoBackground"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@null"-->
+    <!--android:text="@string/class_general_program_tree"/>-->
+
+    <!--</LinearLayout>-->
+
     <Button
         android:id="@+id/program_tree"
         style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/class_general_program_tree"
-        app:layout_marginLeftPercent="30%"
-        app:layout_marginTopPercent="5%"
-        app:layout_widthPercent="40%"/>
+        app:layout_marginLeftPercent="35%"
+        app:layout_marginTopPercent="2%"
+        app:layout_widthPercent="30%"/>
+
 
     <Button
         android:id="@+id/schedule"
@@ -81,9 +114,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/program_tree"
         android:text="@string/class_general_schedule"
-        app:layout_marginLeftPercent="30%"
+        app:layout_marginLeftPercent="35%"
         app:layout_marginTopPercent="2%"
-        app:layout_widthPercent="40%"/>
+        app:layout_widthPercent="30%"/>
 
     <Button
         android:id="@+id/price"
@@ -92,9 +125,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/schedule"
         android:text="@string/class_general_price"
-        app:layout_marginLeftPercent="30%"
+        app:layout_marginLeftPercent="35%"
         app:layout_marginTopPercent="2%"
-        app:layout_widthPercent="40%"/>
+        app:layout_widthPercent="30%"/>
 
     <Button
         android:id="@+id/form_price"
@@ -103,9 +136,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/price"
         android:text="@string/class_general_form_price"
-        app:layout_marginLeftPercent="30%"
+        app:layout_marginLeftPercent="35%"
         app:layout_marginTopPercent="2%"
-        app:layout_widthPercent="40%"/>
+        app:layout_widthPercent="30%"/>
 
 
     <Button
@@ -115,9 +148,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/price"
         android:text="@string/class_general_website"
-        app:layout_marginLeftPercent="30%"
+        app:layout_marginLeftPercent="35%"
         app:layout_marginTopPercent="2%"
-        app:layout_widthPercent="40%"/>
+        app:layout_widthPercent="30%"/>
 
     <!--<android.support.percent.PercentRelativeLayout-->
     <!--android:layout_width="match_parent"-->
