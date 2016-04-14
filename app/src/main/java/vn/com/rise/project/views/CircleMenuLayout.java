@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import vn.com.rise.project.R;
+import vn.com.rise.project.Utils.Constants;
 
 
 /**
@@ -26,11 +27,13 @@ public class CircleMenuLayout extends ViewGroup {
     /**
      * 该容器内child item的默认尺寸
      */
-    private static final float RADIO_DEFAULT_CHILD_DIMENSION = 1 / 4f;
+//    private static final float RADIO_DEFAULT_CHILD_DIMENSION = 1 / 4f;
+    private static final float RADIO_DEFAULT_CHILD_DIMENSION = 23 / 80f;
     /**
      * 菜单的中心child的默认尺寸
      */
-    private float RADIO_DEFAULT_CENTERITEM_DIMENSION = 1 / 3f;
+//    private float RADIO_DEFAULT_CENTERITEM_DIMENSION = 1 / 3f;
+    private float RADIO_DEFAULT_CENTERITEM_DIMENSION = 8 / 30f;
     /**
      * 该容器的内边距,无视padding属性，如需边距请用该变量
      */
@@ -93,6 +96,27 @@ public class CircleMenuLayout extends ViewGroup {
         super(context, attrs);
         // 无视padding
         setPadding(0, 0, 0, 0);
+
+        if (isInEditMode()) {
+            int size = Constants.getMapsValueClass().size();
+            mItemTexts = new String[size];
+
+            for (int i = 0; i < size; i++) {
+                mItemTexts[i] = Constants.getMapsValueClass().get(i);
+            }
+
+            mItemImgs = new int[]{
+                    R.drawable.icon1,
+                    R.drawable.icon2,
+                    R.drawable.icon3,
+                    R.drawable.icon4,
+                    R.drawable.icon5,
+                    R.drawable.icon6,
+                    R.drawable.icon7,
+            };
+
+            setMenuItemIconsAndTexts(mItemImgs, mItemTexts);
+        }
     }
 
     /**

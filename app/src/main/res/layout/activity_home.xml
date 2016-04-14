@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/icon_background_gray480"
-    android:gravity="center"
     tools:context=".activity.HomeActivity">
 
     <!--<at.markushi.ui.CircleButton-->
@@ -20,24 +20,35 @@
         android:id="@+id/id_menulayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:background="@drawable/ic_circle_bg_green">
 
-        <RelativeLayout
-            android:id="@id/id_circle_menu_item_center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <!--<android.support.percent.PercentRelativeLayout-->
+           <!---->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/icon_menu_center_pressed"/>
+            <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:src="@drawable/icon_menu_center_pressed"/>-->
 
-            <ImageView
-                android:layout_width="116.0dip"
-                android:layout_height="116.0dip"
+            <net.soulwolf.widget.ratiolayout.widget.RatioImageView
+                android:id="@id/id_circle_menu_item_center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:src="@drawable/turnplate_mask_unlogin_normal"/>
+                android:src="@drawable/icon_menu_center_new"
+                app:datumRatio="datumHeight"
+                app:heightRatio="1.0"
+                app:widthRatio="1.0"/>
+
+            <!--<ImageView-->
+            <!--android:layout_width="116.0dip"-->
+            <!--android:layout_height="116.0dip"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:src="@drawable/turnplate_mask_unlogin_normal"/>-->
 
             <!--<ImageView-->
             <!--android:layout_width="104.0dip"-->
@@ -50,7 +61,7 @@
             <!--android:layout_height="116.0dip"-->
             <!--android:layout_centerInParent="true"-->
             <!--android:background="@drawable/turnplate_mask_unlogin_normal"/>-->
-        </RelativeLayout>
+        <!--</android.support.percent.PercentRelativeLayout>-->
     </vn.com.rise.project.views.CircleMenuLayout>
 
-</LinearLayout>
+</FrameLayout>
