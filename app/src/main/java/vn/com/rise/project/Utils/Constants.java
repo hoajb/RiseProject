@@ -14,6 +14,8 @@ import vn.com.rise.project.R;
  */
 public class Constants {
     private static SparseArray<String> mapValueClass;
+    private static SparseArray<String> mapValueMainClass;
+    private static SparseArray<String> mapValueGeneralClass;
 
     public static final String WEBSITE_RISE = "http://rise.com.vn/";
 
@@ -31,6 +33,34 @@ public class Constants {
         }
 
         return mapValueClass;
+    }
+
+    public static SparseArray<String> getMapsValueMainClass(Context pContext) {
+        if (mapValueMainClass == null) {
+            mapValueMainClass = new SparseArray<>();
+
+            Resources resources = pContext.getResources();
+            mapValueMainClass.put(0, resources.getString(R.string.class_main_detail_image));
+            mapValueMainClass.put(1, resources.getString(R.string.class_main_detail_video));
+            mapValueMainClass.put(2, resources.getString(R.string.class_main_detail_info));
+        }
+
+        return mapValueMainClass;
+    }
+
+    public static SparseArray<String> getMapsValueGeneralClass(Context pContext) {
+        if (mapValueGeneralClass == null) {
+            mapValueGeneralClass = new SparseArray<>();
+
+            Resources resources = pContext.getResources();
+            mapValueGeneralClass.put(0, resources.getString(R.string.class_general_program_tree));
+            mapValueGeneralClass.put(1, resources.getString(R.string.class_general_schedule));
+            mapValueGeneralClass.put(2, resources.getString(R.string.class_general_price));
+            mapValueGeneralClass.put(3, resources.getString(R.string.class_general_form_price));
+            mapValueGeneralClass.put(4, resources.getString(R.string.class_general_website));
+        }
+
+        return mapValueGeneralClass;
     }
 
     private static List<Integer> listAge;

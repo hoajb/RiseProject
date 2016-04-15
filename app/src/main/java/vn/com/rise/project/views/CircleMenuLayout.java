@@ -3,12 +3,14 @@ package vn.com.rise.project.views;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import vn.com.rise.project.R;
@@ -92,31 +94,74 @@ public class CircleMenuLayout extends ViewGroup {
 
     private int mMenuItemLayoutId = R.layout.circle_menu_item_v2;
 
+    //Add to hide item text
+    private boolean isHideItemText = false;
+
+    private boolean isHideMenuCenterItem = false;
+
+    public void setHideItemText(boolean pHideItemText) {
+        isHideItemText = pHideItemText;
+    }
+
+    public void setHideMenuCenterItem(boolean pHideMenuCenterItem) {
+        isHideMenuCenterItem = pHideMenuCenterItem;
+    }
+
     public CircleMenuLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         // 无视padding
         setPadding(0, 0, 0, 0);
 
         if (isInEditMode()) {
-            int size = Constants.getMapsValueClass().size();
-            mItemTexts = new String[size];
-
-            for (int i = 0; i < size; i++) {
-                mItemTexts[i] = Constants.getMapsValueClass().get(i);
-            }
-
-            mItemImgs = new int[]{
-                    R.drawable.icon1,
-                    R.drawable.icon2,
-                    R.drawable.icon3,
-                    R.drawable.icon4,
-                    R.drawable.icon5,
-                    R.drawable.icon6,
-                    R.drawable.icon7,
-            };
-
-            setMenuItemIconsAndTexts(mItemImgs, mItemTexts);
+//            enableFakeHomeData();
+            enableFakeMainData();
         }
+    }
+
+    private void enableFakeHomeData() {
+        int size = Constants.getMapsValueClass().size();
+        mItemTexts = new String[size];
+
+        for (int i = 0; i < size; i++) {
+            mItemTexts[i] = Constants.getMapsValueClass().get(i);
+        }
+
+        mItemImgs = new int[]{
+                R.drawable.icon1,
+                R.drawable.icon2,
+                R.drawable.icon3,
+                R.drawable.icon4,
+                R.drawable.icon5,
+                R.drawable.icon6,
+                R.drawable.icon7,
+        };
+
+        setMenuItemIconsAndTexts(mItemImgs, mItemTexts);
+    }
+
+    private void enableFakeMainData() {
+        setHideItemText(true);
+        setHideMenuCenterItem(true);
+
+        SparseArray<String> arrs = Constants.getMapsValueMainClass(getContext());
+        int size = arrs.size();
+        mItemTexts = new String[size];
+
+        for (int i = 0; i < size; i++) {
+            mItemTexts[i] = arrs.get(i);
+        }
+
+        mItemImgs = new int[]{
+//                R.drawable.icon1,
+//                R.drawable.icon2,
+//                R.drawable.icon3,
+
+                R.drawable.icon_image_circle,
+                R.drawable.icon_video_circle,
+                R.drawable.icon_info_circle,
+        };
+
+        setMenuItemIconsAndTexts(mItemImgs, mItemTexts);
     }
 
     /**
@@ -272,19 +317,24 @@ public class CircleMenuLayout extends ViewGroup {
         // 找到中心的view，如果存在设置onclick事件
         View cView = findViewById(R.id.id_circle_menu_item_center);
         if (cView != null) {
-            cView.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                    if (mOnMenuItemClickListener != null) {
-                        mOnMenuItemClickListener.itemCenterClick(v);
+            if (isHideMenuCenterItem) {
+                cView.setVisibility(INVISIBLE);
+            } else {
+                cView.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if (mOnMenuItemClickListener != null) {
+                            mOnMenuItemClickListener.itemCenterClick(v);
+                        }
                     }
-                }
-            });
-            // 设置center item位置
-            int cl = layoutRadius / 2 - cView.getMeasuredWidth() / 2;
-            int cr = cl + cView.getMeasuredWidth();
-            cView.layout(cl, cl, cr, cr);
+                });
+                // 设置center item位置
+                int cl = layoutRadius / 2 - cView.getMeasuredWidth() / 2;
+                int cr = cl + cView.getMeasuredWidth();
+                cView.layout(cl, cl, cr, cr);
+            }
         }
 
     }
@@ -470,7 +520,21 @@ public class CircleMenuLayout extends ViewGroup {
             TextView tv = (TextView) view
                     .findViewById(R.id.id_circle_menu_item_text);
 
+            if (tv != null) {
+                if (isHideItemText) {
+                    tv.setVisibility(View.GONE);
+                } else {
+                    tv.setVisibility(View.VISIBLE);
+                    tv.setText(mItemTexts[i]);
+                }
+            }
+
             if (iv != null) {
+                if (isHideItemText) {
+                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) iv.getLayoutParams();
+                    params.setMargins(params.leftMargin, 0, params.rightMargin, params.bottomMargin);
+                    iv.setLayoutParams(params);
+                }
                 iv.setVisibility(View.VISIBLE);
                 iv.setImageResource(mItemImgs[i]);
                 iv.setOnClickListener(new OnClickListener() {
@@ -482,10 +546,6 @@ public class CircleMenuLayout extends ViewGroup {
                         }
                     }
                 });
-            }
-            if (tv != null) {
-                tv.setVisibility(View.VISIBLE);
-                tv.setText(mItemTexts[i]);
             }
 
             // 添加view到容器中
