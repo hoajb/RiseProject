@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/icon_background_gray480"
+    android:orientation="vertical"
+    tools:context=".activity.MainClassDetailActivity">
+
+    <vn.com.rise.project.views.percentage.PercentLinearLayout
+        android:id="@+id/layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_heightPercent="10%"
+        app:layout_marginLeftPercent="18%"
+        app:layout_marginTopPercent="5%">
+
+        <ImageView
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/state_button_back"/>
+
+        <ImageView
+            android:id="@+id/button_home"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            android:src="@drawable/state_button_home"/>
+
+        <TextView
+            android:id="@+id/title_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_title_2"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textColor="@color/Black_Title"
+            android:textStyle="bold"
+            tools:text="PreK"/>
+    </vn.com.rise.project.views.percentage.PercentLinearLayout>
+
+    <vn.com.rise.project.views.CircleMenuLayout
+        android:id="@+id/id_menulayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ic_circle_bg_green"
+        app:layout_marginTopPercent="15%">
+
+        <net.soulwolf.widget.ratiolayout.widget.RatioImageView
+            android:id="@id/id_circle_menu_item_center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/icon_menu_center_new"
+            android:visibility="visible"
+            app:datumRatio="datumHeight"
+            app:heightRatio="1.0"
+            app:widthRatio="1.0"/>
+
+    </vn.com.rise.project.views.CircleMenuLayout>
+</android.support.percent.PercentRelativeLayout>
