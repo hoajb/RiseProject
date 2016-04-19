@@ -29,11 +29,12 @@ public class GeneralClassActivity extends BaseActivity implements View.OnClickLi
     private String[] mItemTexts;
 
     private int[] mItemImgs = new int[]{
-            R.drawable.icon6,
-            R.drawable.icon7,
-            R.drawable.icon8,
-            R.drawable.icon9,
-            R.drawable.icon10,
+
+            R.drawable.icon_circle_programe,
+            R.drawable.icon_circle_schedule,
+            R.drawable.icon_circle_money2,
+            R.drawable.icon_circle_form_save,
+            R.drawable.icon_circle_logo_rise,
     };
 
     @Override
@@ -70,7 +71,7 @@ public class GeneralClassActivity extends BaseActivity implements View.OnClickLi
         }
         mCircleMenuLayout = (CircleMenuLayout) findViewById(R.id.id_menulayout);
         mCircleMenuLayout.setHideItemText(true);
-        mCircleMenuLayout.setHideMenuCenterItem(true);
+//        mCircleMenuLayout.setHideMenuCenterItem(true);
         mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImgs, mItemTexts);
 
         mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
@@ -117,7 +118,7 @@ public class GeneralClassActivity extends BaseActivity implements View.OnClickLi
 
             @Override
             public void itemCenterClick(View view) {
-                //TODO
+                finish();
             }
         });
     }
