@@ -29,9 +29,9 @@ public class MainClassDetailActivity extends BaseActivity implements View.OnClic
     private String[] mItemTexts;
 
     private int[] mItemImgs = new int[]{
-            R.drawable.icon_image_circle,
-            R.drawable.icon_video_circle,
-            R.drawable.icon_info_circle,
+            R.drawable.icon_circle_image,
+            R.drawable.icon_circle_video,
+            R.drawable.icon_circle_info,
     };
 
     @Override
@@ -64,7 +64,7 @@ public class MainClassDetailActivity extends BaseActivity implements View.OnClic
         }
         mCircleMenuLayout = (CircleMenuLayout) findViewById(R.id.id_menulayout);
         mCircleMenuLayout.setHideItemText(true);
-        mCircleMenuLayout.setHideMenuCenterItem(true);
+//        mCircleMenuLayout.setHideMenuCenterItem(true);
         mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImgs, mItemTexts);
 
         mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
@@ -101,7 +101,7 @@ public class MainClassDetailActivity extends BaseActivity implements View.OnClic
 
             @Override
             public void itemCenterClick(View view) {
-                //TODO
+                finish();
             }
         });
     }

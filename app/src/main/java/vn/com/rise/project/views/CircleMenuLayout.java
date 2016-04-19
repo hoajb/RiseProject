@@ -30,7 +30,9 @@ public class CircleMenuLayout extends ViewGroup {
      * 该容器内child item的默认尺寸
      */
 //    private static final float RADIO_DEFAULT_CHILD_DIMENSION = 1 / 4f;
-    private static final float RADIO_DEFAULT_CHILD_DIMENSION = 23 / 80f;
+    private static final float RADIO_DEFAULT_CHILD_DIMENSION_FINAL = 23 / 80f;
+    private static final float RADIO_DEFAULT_CHILD_DIMENSION_NON_TEXT_FINAL = 1 / 4f;
+    private float RADIO_DEFAULT_CHILD_DIMENSION = RADIO_DEFAULT_CHILD_DIMENSION_FINAL;
     /**
      * 菜单的中心child的默认尺寸
      */
@@ -100,6 +102,7 @@ public class CircleMenuLayout extends ViewGroup {
     private boolean isHideMenuCenterItem = false;
 
     public void setHideItemText(boolean pHideItemText) {
+        RADIO_DEFAULT_CHILD_DIMENSION = RADIO_DEFAULT_CHILD_DIMENSION_NON_TEXT_FINAL;
         isHideItemText = pHideItemText;
     }
 
@@ -141,7 +144,7 @@ public class CircleMenuLayout extends ViewGroup {
 
     private void enableFakeMainData() {
         setHideItemText(true);
-        setHideMenuCenterItem(true);
+//        setHideMenuCenterItem(true);
 
         SparseArray<String> arrs = Constants.getMapsValueMainClass(getContext());
         int size = arrs.size();
@@ -152,13 +155,9 @@ public class CircleMenuLayout extends ViewGroup {
         }
 
         mItemImgs = new int[]{
-//                R.drawable.icon1,
-//                R.drawable.icon2,
-//                R.drawable.icon3,
-
-                R.drawable.icon_image_circle,
-                R.drawable.icon_video_circle,
-                R.drawable.icon_info_circle,
+                R.drawable.icon_circle_image,
+                R.drawable.icon_circle_video,
+                R.drawable.icon_circle_info,
         };
 
         setMenuItemIconsAndTexts(mItemImgs, mItemTexts);

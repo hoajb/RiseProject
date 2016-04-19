@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:src="@drawable/icon_menu_center_new"
+            android:src="@drawable/icon_back_center"
             android:visibility="visible"
             app:datumRatio="datumHeight"
             app:heightRatio="1.0"
