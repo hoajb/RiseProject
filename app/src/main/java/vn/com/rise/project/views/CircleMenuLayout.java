@@ -117,7 +117,8 @@ public class CircleMenuLayout extends ViewGroup {
 
         if (isInEditMode()) {
 //            enableFakeHomeData();
-            enableFakeMainData();
+//            enableFakeMainData();
+            enableFakeGeneralnData();
         }
     }
 
@@ -158,6 +159,28 @@ public class CircleMenuLayout extends ViewGroup {
                 R.drawable.icon_circle_image,
                 R.drawable.icon_circle_video,
                 R.drawable.icon_circle_info,
+        };
+
+        setMenuItemIconsAndTexts(mItemImgs, mItemTexts);
+    }
+    private void enableFakeGeneralnData() {
+        setHideItemText(true);
+//        setHideMenuCenterItem(true);
+
+        SparseArray<String> arrs = Constants.getMapsValueGeneralClass(getContext());
+        int size = arrs.size();
+        mItemTexts = new String[size];
+
+        for (int i = 0; i < size; i++) {
+            mItemTexts[i] = arrs.get(i);
+        }
+
+        mItemImgs = new int[]{
+                R.drawable.icon_circle_programe,
+                R.drawable.icon_circle_schedule,
+                R.drawable.icon_circle_money2,
+                R.drawable.icon_circle_form_save,
+                R.drawable.icon_circle_logo_rise,
         };
 
         setMenuItemIconsAndTexts(mItemImgs, mItemTexts);
